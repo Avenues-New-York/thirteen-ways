@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thirteen Ways of Looking at AI · Avenues New York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Merriweather:wght@900&family=Caveat:wght@500&family=Long+Cang&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3E69B2;
+    --paper: #ffffff;
+    --ink: #111418;
+    --muted: #5a5f68;
+    --line: #e3e3e0;
+    --slot: #f6f6f3;
+    --sans: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Merriweather", Georgia, "Times New Roman", serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17191d; --ink: #ecebe7; --muted: #a4a7ad; --line: #30333a; --slot: #1f2227;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17191d; --ink: #ecebe7; --muted: #a4a7ad; --line: #30333a; --slot: #1f2227;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 17px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+  .numeral { font-family: var(--serif); font-weight: 900; color: #000; line-height: 1; letter-spacing: -0.01em; }
+
+  /* ---------- Blackbird ---------- */
+  .bird { display: block; }
+  .bird .eye { transform-box: fill-box; transform-origin: center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .home .bird .eye { animation: glance 7s ease-in-out infinite; }
+    @keyframes glance {
+      0%, 40%, 100% { transform: translateX(0); }
+      46%, 60% { transform: translateX(-1.6px); }
+      66%, 80% { transform: translateX(1px); }
+    }
+  }
+
+  /* ---------- Opening flock ---------- */
+  .cover { position: relative; isolation: isolate; }
+  .cover > .wrap { position: relative; z-index: 1; }
+  .flock-layer { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+  .flock-layer.back { z-index: 0; }
+  .flock-layer.front { z-index: 2; }
+  .cover.intro { cursor: pointer; }
+  /* ---------- Opening: one bird, thirteen ways ---------- */
+  .cover.intro .word { opacity: 0; transform: translateY(.14em); filter: blur(4px); }
+  .cover .word { display: inline-block; transition: opacity .9s ease, transform .9s ease, filter .9s ease; }
+  .cover.intro .word.on { opacity: 1; transform: none; filter: none; }
+  .cover.arrived .school { animation: settle .9s ease-out both; }
+  @keyframes perch { from { opacity: 0; } to { opacity: 1; } }
+  .solo { position: fixed; left: 0; top: 0; pointer-events: none; will-change: transform; }
+  .solo svg { display: block; width: 100%; overflow: visible; }
+  .sky { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+  .sky.back { z-index: 0; }
+  .sky.front { z-index: 2; }
+  .count { position: fixed; right: max(28px, env(safe-area-inset-right, 0px)); bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+           z-index: 2; font-family: var(--serif); font-weight: 900; font-size: 22px; color: #000; pointer-events: none; transition: opacity .3s ease; }
+  .flyer { position: absolute; left: 0; top: 0; will-change: transform; }
+  .flyer svg { display: block; width: 100%; overflow: visible; }
+  .flyer .wing { transform-origin: 47px 28px; animation: flap var(--f, .34s) ease-in-out infinite alternate; }
+  .flyer .wing.far { animation-delay: calc(var(--f, .34s) * -0.35); }
+  .flyer.glide .wing { animation-play-state: paused; }
+  @keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(-0.75); } }
+
+  .cover .wrap > * { transition: opacity .8s ease, filter .8s ease; }
+  .cover.intro .school, .cover.intro .date { opacity: 0; }
+  .cover.intro .title .bird { opacity: 0; }
+  .cover.veiled .subject { transition: none; opacity: var(--reveal, .05); filter: blur(calc((1 - var(--reveal, .05)) * 7px)); }
+  .cover.shout .school, .cover.shout .date { animation: settle .9s ease-out both; }
+  .cover.shout .date { animation-delay: .2s; }
+  .cover.shout .title .bird { animation: land 1.4s cubic-bezier(.3,1.35,.5,1) both; }
+  @keyframes settle { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes land {
+    0%   { opacity: 0; transform: translate(-160px, -190px) rotate(-26deg) scale(1.25); }
+    30%  { opacity: 1; }
+    100% { opacity: 1; transform: none; }
+  }
+  .title, .subject { transform-origin: left center; }
+
+  /* ---------- Home ---------- */
+  .cover { background: var(--blue); color: #fff; padding: 12vh 0 10vh; min-height: 100vh; display: flex; align-items: center; }
+  .school { font-size: clamp(22px, 3vw, 32px); color: #1d1d1b; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .school b { font-weight: 800; letter-spacing: -0.04em; }
+  .school span { font-weight: 400; }
+  .title { position: relative; display: inline-block; margin: 0; font-weight: 800; font-size: clamp(46px, 8.6vw, 104px); line-height: 0.98; letter-spacing: -0.035em; }
+  .title .bird { position: absolute; width: 1.25em; right: -0.56em; top: -0.84em; }
+  .subject { margin: 0.35em 0 0; font-weight: 300; font-size: clamp(56px, 11vw, 132px); line-height: 1.02; letter-spacing: -0.02em; }
+  .date { margin: 0.9em 0 0; font-weight: 800; font-size: clamp(22px, 3vw, 34px); color: #1d1d1b; }
+
+  .catalog { padding: 72px 0 80px; }
+  .catalog h2, .poem h2 { font-weight: 600; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; margin: 0 0 28px; }
+  .ways { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+  .ways a {
+    display: flex; align-items: baseline; gap: 16px; text-decoration: none;
+    background: var(--c); color: #fff; padding: 14px 20px; font-size: clamp(18px, 2.3vw, 26px); font-weight: 400;
+    transition: padding-left .25s ease;
+  }
+  .ways a:hover { padding-left: 30px; }
+  .ways .numeral { font-size: 0.95em; min-width: 2.6em; }
+  .ways .n-dark { color: #000; }
+
+  .poem { background: var(--blue); color: #fff; padding: 80px 0 72px; }
+  .poem h2 { font-weight: 800; font-size: clamp(34px, 5vw, 58px); line-height: 1.02; margin-bottom: 6px; position: relative; display: inline-block; }
+  .perch-word { position: relative; display: inline-block; line-height: .98; }
+  .perch-word .bird { position: absolute; width: 1.25em; right: -0.56em; top: -0.849em; }
+  .poem .by { font-weight: 800; font-size: clamp(24px, 3vw, 34px); color: #1d1d1b; margin: 0 0 40px; letter-spacing: -0.02em; }
+  .stanzas { columns: 2 280px; column-gap: 64px; }
+  .stanza { break-inside: avoid; margin: 0 0 26px; }
+  .stanza a { text-decoration: none; }
+  .stanza .numeral { font-size: 15px; display: block; margin-bottom: 4px; }
+  .stanza p { margin: 0; font-weight: 300; white-space: pre-line; line-height: 1.45; }
+  .credit { margin-top: 36px; font-size: 13px; opacity: .85; }
+
+  /* ---------- Way page ---------- */
+  .hero { background: var(--c); color: #fff; }
+  .hero-top { display: flex; justify-content: space-between; align-items: center; padding: 26px 0; }
+  .hero-top a { font-weight: 600; font-size: 19px; text-decoration: none; letter-spacing: -0.01em; }
+  .hero-top a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .hero-top nav { display: flex; gap: 22px; }
+  .hero-top { padding-right: 56px; }
+  .hero-top nav a { font-weight: 400; font-size: 17px; }
+  .hero-top nav a[aria-current="page"] { font-weight: 800; }
+
+  /* ---------- Evening band (home) ---------- */
+  .evening { border-bottom: 1px solid var(--line); padding: 44px 0; }
+  .evening .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .when { margin: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.3; }
+  .when b { font-weight: 800; display: block; }
+  .when span { font-weight: 300; }
+  .evening .links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ---------- About the evening ---------- */
+  .page-hero .hero-body { grid-template-columns: 1fr; padding: 7vh 0 64px; }
+  .page-hero h1 { max-width: 14ch; }
+  .page-hero .when { margin-top: 24px; color: #fff; }
+  .page-hero .when span { color: #1d1d1b; font-weight: 400; }
+  .prose { padding: 64px 0 20px; }
+  .prose .wrap > div { max-width: 66ch; }
+  .prose p { margin: 0 0 1.2em; font-size: 19px; line-height: 1.6; }
+  .prose p.lead { font-size: clamp(22px, 2.6vw, 27px); line-height: 1.45; font-weight: 300; }
+  .questions { list-style: none; margin: 8px 0 34px; padding: 0; border-left: 4px solid var(--blue); }
+  .questions li { padding: 8px 0 8px 22px; font-size: 20px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+  .prose a { color: var(--blue); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .prose a { color: #8fb0ea; } }
+  .spectrum { display: grid; grid-template-columns: repeat(13, 1fr); height: 10px; margin: 8px 0 36px; }
+  .spectrum a { display: block; }
+
+  .home-section { padding: 80px 0 40px; }
+  .home-section h2 { font-weight: 800; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 14px; max-width: 18ch; }
+  .home-section .when { margin: 0 0 36px; }
+  .home-section .when span { color: var(--muted); }
+  .agenda-section { border-top: 1px solid var(--line); padding-bottom: 72px; }
+  .ema-hero-body { padding: 4vh 0 36px; }
+  .ema-hero h1 { margin: 0; font-weight: 800; font-size: clamp(42px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.03em; }
+  .ema-hero-sub { margin: 18px 0 0; font-size: 20px; font-weight: 300; color: #fff; max-width: 40ch; line-height: 1.45; }
+  .ema-rack { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3%; padding-top: 6px; margin-bottom: 64px; }
+  .ema-rack::before { content: ""; position: absolute; left: -2%; right: -2%; top: 0; height: 6px; background: #000; border-radius: 3px; z-index: 2; }
+  .ema-hang { margin: 0; transform-origin: 50% 0; }
+  .ema-hang.h1 { transform: rotate(-2.5deg); }
+  .ema-hang.h2 { margin-top: 5%; transform: rotate(1.5deg); }
+  .ema-hang.h3 { margin-top: 1%; transform: rotate(3deg); }
+  .ema-bird { display: block; width: 100%; overflow: visible; filter: drop-shadow(0 10px 14px rgba(0,0,0,.28)); }
+  .ema-hang .ema-bird { transform-origin: 51% 0; }
+  .ema-hang figcaption { text-align: center; font-size: 14px; font-weight: 600; color: #1d1d1b; margin-top: 4px; }
+  .pen text { fill: #f4f4f0; }
+  .pen-en text, .pen-es text { font-family: "Caveat", cursive; font-weight: 500; }
+  .pen-zh-Hans text { font-family: "Long Cang", "Kaiti SC", "STKaiti", cursive; }
+  .ema-rack-note { margin: 22px 0 0; padding-bottom: 56px; font-size: 16px; color: #fff; max-width: 60ch; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ema-hang .ema-bird { animation: sway 6s ease-in-out infinite alternate; }
+    .ema-hang.h2 .ema-bird { animation-duration: 7.2s; animation-direction: alternate-reverse; }
+    .ema-hang.h3 .ema-bird { animation-duration: 5.4s; }
+    @keyframes sway { from { rotate: -1.8deg; } to { rotate: 1.8deg; } }
+  }
+  .ema-prose .lead { font-weight: 300; }
+  .ema-h { font-weight: 800; font-size: 26px; letter-spacing: -0.02em; margin: 40px 0 12px; padding-top: 18px; border-top: 4px solid var(--blue); display: inline-block; }
+  .ema-prompt { background: #0a0a0c; color: #f4f4f0; padding: 26px 28px; margin: 8px 0 26px; }
+  .ema-prompt .ema-prompt-label { margin: 0 0 8px; font-size: 15px; font-weight: 600; color: #b9c6de; }
+  .ema-prompt .ema-prompt-text { margin: 0; font-size: clamp(21px, 2.4vw, 26px); line-height: 1.4; font-weight: 400; }
+  @media (max-width: 760px) {
+    .ema-rack { grid-template-columns: 1fr; gap: 26px; padding: 0; }
+    .ema-rack::before { display: none; }
+    .ema-hang, .ema-hang.h2, .ema-hang.h3 { margin-top: 0; }
+  }
+  .agenda-section .agenda { padding-top: 0; border-top: 2px solid var(--blue); }
+  #about .prose, #about { padding-bottom: 56px; }
+
+  /* ---------- Agenda ---------- */
+  .agenda { list-style: none; margin: 0; padding: 56px 0 30px; }
+  .agenda li { display: grid; grid-template-columns: 210px 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .agenda .time { font-weight: 800; font-size: 19px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .agenda .what { font-size: 22px; font-weight: 300; line-height: 1.35; }
+  .agenda .what b { font-weight: 600; }
+  .agenda .detail { display: block; font-size: 15px; color: var(--muted); margin-top: 4px; font-weight: 400; }
+  .agenda .feature .what { font-weight: 600; }
+  .agenda .spectrum { margin: 14px 0 6px; height: 12px; max-width: 520px; }
+  .agenda .spectrum a:hover, .agenda .spectrum a:focus-visible { transform: scaleY(1.8); }
+  .agenda .spectrum a { transition: transform .2s ease; }
+  @media (max-width: 760px) {
+    .agenda li { grid-template-columns: 1fr; gap: 4px; }
+    .hero-top { flex-wrap: wrap; gap: 10px; }
+  }
+  .hero-body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: end; padding: 9vh 0 72px; }
+  .hero .numeral { font-size: clamp(64px, 9vw, 104px); margin-bottom: 10px; }
+  .hero h1 { margin: 0; font-weight: 300; font-size: clamp(44px, 7vw, 86px); line-height: 1.02; letter-spacing: -0.02em; }
+  .epigraph { color: var(--e); border-left: 2px solid currentColor; padding-left: 22px; }
+  .epigraph .bird { width: 64px; margin-bottom: 14px; }
+  .epigraph p { margin: 0; white-space: pre-line; font-weight: 300; font-size: 18px; line-height: 1.5; }
+  .epigraph cite { display: block; margin-top: 12px; font-style: normal; font-size: 13px; font-weight: 600; opacity: .85; }
+
+  .course { padding: 64px 0 20px; }
+  .lens-empty { max-width: 60ch; font-size: 19px; font-weight: 300; line-height: 1.55; margin: 0 0 40px; }
+  .lens-empty a { color: inherit; text-decoration-color: var(--c); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .course + .course { border-top: 1px solid var(--line); }
+  .course h2 { font-weight: 800; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; max-width: 30ch; }
+  .course h2 em { font-weight: 800; }
+  .course h2 small { font-size: 0.7em; font-weight: 600; }
+  .faculty { font-size: 22px; font-weight: 300; margin: 0 0 22px; }
+  .faculty b { font-weight: 800; }
+  .rule { height: 4px; background: var(--c); border: 0; margin: 0 0 30px; }
+  .desc { max-width: 68ch; }
+  .desc p { margin: 0 0 1em; }
+  .desc blockquote { margin: 0 0 1.2em; font-style: italic; }
+  .desc blockquote span { font-style: normal; }
+
+  .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin: 40px 0 44px; }
+  .extras h3 { font-size: 15px; font-weight: 800; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--c); }
+  .bio { display: flex; gap: 16px; margin-bottom: 20px; }
+  .avatar { flex: none; width: 58px; height: 58px; border-radius: 50%; background: var(--slot); border: 1px dashed var(--muted); display: grid; place-items: center; }
+  .avatar .bird { width: 36px; opacity: .55; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio h4 { margin: 2px 0 4px; font-size: 17px; font-weight: 600; }
+  .bio p { margin: 0 0 .7em; font-size: 15px; line-height: 1.5; }
+  .bio p:last-child { margin-bottom: 0; }
+  .placeholder { color: var(--muted); font-style: italic; }
+  .readings { list-style: none; margin: 0; padding: 0; }
+  .readings li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .readings li:first-child { padding-top: 0; }
+  .readings-note { margin: 0 0 12px; font-size: 14px; font-style: italic; color: var(--muted); }
+  .readings a { font-weight: 600; text-decoration-color: var(--c); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .readings .by { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .readings .note { margin-top: 4px; }
+  .readings .note { display: block; color: var(--muted); font-size: 14px; }
+  .readings .empty { display: block; height: 10px; width: 70%; background: var(--slot); border-radius: 2px; margin: 6px 0; }
+
+  .pager { display: flex; justify-content: space-between; gap: 12px; padding: 36px 0 64px; }
+  .btn { display: inline-block; min-width: 150px; text-align: center; background: var(--blue); color: #fff; font-weight: 800; font-size: 18px; padding: 11px 22px; text-decoration: none; border: 0; }
+  .btn:hover { filter: brightness(1.1); }
+  .btn.prev { background: transparent; color: var(--blue); box-shadow: inset 0 0 0 2px var(--blue); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.prev { color: #8fb0ea; box-shadow: inset 0 0 0 2px #8fb0ea; } }
+  .next-way { margin-left: auto; text-align: right; }
+  .next-way small { display: block; color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+  /* ---------- Search ---------- */
+  .search-btn { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); z-index: 40;
+    width: 46px; height: 46px; border-radius: 50%; border: 0; background: #fff; color: #111; cursor: pointer;
+    display: grid; place-items: center; box-shadow: 0 2px 10px rgba(0,0,0,.18); transition: transform .2s ease; }
+  .search-btn:hover { transform: scale(1.06); }
+  .search-btn svg, .search-field svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+  .search { position: fixed; inset: 0; z-index: 60; background: rgba(20,26,40,.55); backdrop-filter: blur(3px);
+    display: flex; justify-content: center; align-items: flex-start; padding: calc(8vh + env(safe-area-inset-top, 0px)) 16px 16px; }
+  .search[hidden] { display: none; }
+  .search-panel { width: 100%; max-width: 680px; background: var(--paper); color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    max-height: 80vh; display: flex; flex-direction: column; }
+  .search-field { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 4px solid var(--blue); }
+  .search-field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 400 20px var(--sans); }
+  .search-close { border: 1px solid var(--line); background: transparent; color: var(--muted); font: 600 12px var(--sans); padding: 4px 8px; cursor: pointer; }
+  .search-results { overflow-y: auto; }
+  .search-results a { display: grid; grid-template-columns: 6px 1fr; gap: 14px; padding: 14px 18px; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .search-results a:hover, .search-results a.active { background: var(--slot); }
+  .search-results .swatch { background: var(--c, var(--blue)); }
+  .search-results .kind { display: block; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+  .search-results .ttl { display: block; font-weight: 600; font-size: 16px; line-height: 1.3; }
+  .search-results .snip { display: block; font-size: 14px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+  .search-results mark { background: rgba(62,105,178,.22); color: inherit; padding: 0 1px; }
+  .search-empty { padding: 18px; color: var(--muted); font-size: 15px; }
+  .room { margin: -12px 0 22px; font-size: 18px; font-weight: 300; }
+  .room b { font-weight: 800; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 44px; font-size: 13px; color: var(--muted); text-align: center; }
+  .colophon { max-width: 56ch; margin: 0 auto 22px; font-size: 16px; line-height: 1.55; color: var(--ink); font-style: italic; }
+  .colophon .bird { width: 44px; margin: 0 auto 12px; }
+  .imprint { margin: 0; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .hero-body, .extras { grid-template-columns: 1fr; }
+    .hero-body { padding-top: 5vh; gap: 36px; }
+    .pager { flex-wrap: wrap; }
+    .btn { min-width: 0; flex: 1; }
+    .next-way { flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="bbBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2b36"/><stop offset=".45" stop-color="#0d0d12"/><stop offset="1" stop-color="#030304"/>
+    </linearGradient>
+    <linearGradient id="bbWing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#23242e"/><stop offset="1" stop-color="#050507"/>
+    </linearGradient>
+    <radialGradient id="bbHead" cx=".45" cy=".35" r=".7">
+      <stop offset="0" stop-color="#262733"/><stop offset="1" stop-color="#060608"/>
+    </radialGradient>
+  </defs>
+</svg>
+<button class="search-btn" type="button" aria-label="Search the site" title="Search (press /)">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 L21 21"/></svg>
+</button>
+<div class="search" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="search-panel">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 L21 21"/></svg>
+      <input type="search" placeholder="Search courses, faculty, readings, rooms…" aria-label="Search" autocomplete="off">
+      <button class="search-close" type="button" aria-label="Close search">Esc</button>
+    </div>
+    <div class="search-results" role="list"></div>
+  </div>
+</div>
+<main id="app"></main>
+
+<script>
+/*
+  ================================================================
+  EDITING GUIDE
+  ----------------------------------------------------------------
+  Everything on the site is generated from the COURSES data below.
+  For each instructor you can fill in:
+      bio:   "A few sentences about the instructor."
+      photo: "data:image/..." (optional, embedded image)
+  For each course you can fill in readings:
+      readings: [
+        { title: "Book or article title", author: "Author",
+          url: "https://...", note: "One line on why it matters" }
+      ]
+  Anything left empty shows a tasteful placeholder.
+  ================================================================
+*/
+
+const WAYS = [
+  { n: "I",    name: "Art and Creativity", c: "#C27F62", e: "#fff",
+    stanza: "Among twenty snowy mountains,\nThe only moving thing\nWas the eye of the blackbird." },
+  { n: "II",   name: "Children, Family Life, and Technology", c: "#B7CC6E", e: "#1d1d1b",
+    stanza: "I was of three minds,\nLike a tree\nIn which there are three blackbirds." },
+  { n: "III",  name: "Culture and Politics", c: "#F2C75C", e: "#1d1d1b",
+    stanza: "The blackbird whirled in the autumn winds.\nIt was a small part of the pantomime." },
+  { n: "IV",   name: "Economy, Labor, and Law", c: "#35B5C9", e: "#fff",
+    stanza: "A man and a woman\nAre one.\nA man and a woman and a blackbird\nAre one." },
+  { n: "V",    name: "Education and Its Purposes", c: "#A9A28C", e: "#fff",
+    stanza: "I do not know which to prefer,\nThe beauty of inflections\nOr the beauty of innuendoes,\nThe blackbird whistling\nOr just after." },
+  { n: "VI",   name: "Ethics and Morality", c: "#D4AE6F", e: "#1d1d1b",
+    stanza: "Icicles filled the long window\nWith barbaric glass.\nThe shadow of the blackbird\nCrossed it, to and fro.\nThe mood\nTraced in the shadow\nAn indecipherable cause." },
+  { n: "VII",  name: "Higher Education", c: "#9696C8", e: "#fff",
+    stanza: "O thin men of Haddam,\nWhy do you imagine golden birds?\nDo you not see how the blackbird\nWalks around the feet\nOf the women about you?" },
+  { n: "VIII", name: "History", c: "#283674", e: "#fff", numeralLight: true,
+    stanza: "I know noble accents\nAnd lucid, inescapable rhythms;\nBut I know, too,\nThat the blackbird is involved\nIn what I know." },
+  { n: "IX",   name: "Human Nature, Anthropology, and Philosophy", c: "#B9B1A8", e: "#1d1d1b",
+    stanza: "When the blackbird flew out of sight,\nIt marked the edge\nOf one of many circles." },
+  { n: "X",    name: "John Henry: Humans vs. the Machines", c: "#287556", e: "#fff",
+    stanza: "At the sight of blackbirds\nFlying in a green light,\nEven the bawds of euphony\nWould cry out sharply." },
+  { n: "XI",   name: "Science and Knowledge", c: "#8A8F6A", e: "#fff",
+    stanza: "He rode over Connecticut\nIn a glass coach.\nOnce, a fear pierced him,\nIn that he mistook\nThe shadow of his equipage\nFor blackbirds." },
+  { n: "XII",  name: "Understanding Computers and AI", c: "#0E9A48", e: "#fff",
+    stanza: "The river is moving.\nThe blackbird must be flying." },
+  { n: "XIII", name: "Utopian and Dystopian Visions", c: "#C4411F", e: "#fff",
+    stanza: "It was evening all afternoon.\nIt was snowing\nAnd it was going to snow.\nThe blackbird sat\nIn the cedar-limbs." }
+];
+
+/* Facilitator bios, keyed by name as it appears in the catalog. */
+const BIOS = {
+  "Scarlett Cheng": "Sijia (Scarlett) Cheng joined Avenues in 2023 and teaches Chinese-side art for the ELC and Lower Division. She holds a master’s degree in Art Education from Teachers College, Columbia University, and a bachelor’s degree in Textile/Surface Design from the Fashion Institute of Technology. Her interests include art and technology, textile design, and digital art, with experience using Photoshop, Illustrator, Unreal Engine, Blender, and Unity.",
+  "Grace Hu": "Grace Hu joined Avenues in 2021 and teaches Chinese-side visual art in the Lower Division. Grace received her master’s degree in arts administration from NYU and is currently pursuing her doctoral degree in Art and Art Education at Columbia University, Teachers College. Her primary research topic is integrating Asian culture into the art curriculum and multiculturalism in art class. In summer 2020, Grace collaborated with the Smithsonian National Museum of Asian Art. She created two interdisciplinary lesson plans based on the museum collections.",
+  "JP Connolly": "JP joined Avenues in 2019 and is an associate division head in the Upper Division, working primarily with 9th grade. He has taught microbiology, anatomy and physiology, pathology, molecular genetics, biotechnology, bioethics, and earth science. Particular passions include digital health, computational thinking, building growth mindsets, resilience, academic program design, AI, bioethics, civics, and bread baking.",
+  "Marytere Garza": "Marytere joined Avenues in 2016 and is the Spanish-side librarian for the ELC and Lower Division. She has taught 4th-grade bilingual education, 3rd-6th English as a second language, kindergarten English, and 5th-grade Spanish immersion. She is passionate about children’s literature, Spanish literature, reading, and research.",
+  "Charlene Sung": "Charlene joined Avenues in 2025 and is the Chinese English Librarian for the ELC and Lower Division. She has taught for over a decade in public and independent schools from New York to Shanghai. In addition to her teaching experience, Charlene is also a writer, working on children's picture books focused on multiculturalism and social-emotional learning. She is passionate about children’s literature, reading, and language learning.",
+  "Sara Hayes": "Sara joined Avenues in 2019 and is a technology integrator across all divisions. She previously taught 5th-grade special education in NYC public schools and is passionate about writing, technology, and creative computation. Her favorite book of all time is <em>Lifelong Kindergarten: Cultivating Creativity Through Projects, Passion, Peers, and Play</em>, by Michael Resnick.",
+  "JD Pirtle": "JD Pirtle joined Avenues in 2026 as the 9th grade Design and Engineering teacher. JD has been teaching fine arts, design, and engineering since 2013. He received a BFA in Digital Art and Experimental Media from the Center for Digital Art and Experimental Media (DXARTS) at the University of Washington, an MFA in Electronic Visualization and New Media Arts from the University of Illinois Chicago, and is currently a PhD candidate in Education Policy Studies: Social Foundations of Education at the University of Illinois Chicago.",
+  "Jonathan Scolnick": "Jonathan Scolnick joined Avenues in 2023 and has worked as a Literature and HIP teacher here. Prior to Avenues, Jonathan worked at schools in Brooklyn, Medellin, and Buenos Aires. He received a master’s degree in English Education from N.Y.U. and earned a BA in Literature and Rhetoric from the University of Illinois (Champaign-Urbana).",
+  "Alia Methven": "Alia joined Avenues in its inaugural year in 2012 as director of library services. Alia is a teacher and librarian, teaching research skills to middle- and upper-grade students and working extensively with the history department to prepare students for research assignments. In addition to developing the digital citizenship curriculum as it pertained to information literacy, she helped students with individual research assignments, showing them how to use databases, research relevant sources, and create bibliographies.",
+  "Yi-Ching Hsieh": "Yi-Ching joined Avenues in 2015 as a Chinese teacher in the middle grades and is now a technology integrator for all divisions. Before joining Avenues, Yi-Ching served as head of the Mandarin department and a curriculum developer at Carousel of Languages. While living in Taiwan, Yi-Ching worked as the associate director of the Mei-Chao Day Care School (Kaohsiung, Taiwan). She also served as a college lecturer and assistant at the Wenzao Ursuline University of Languages (Kaohsiung, Taiwan).",
+  "Davin Sweeney": "Davin is the Director of College Counseling in his 7th year at Avenues. He lives in the Bronx with his wife and daughter, who is an 8th grader here. He hopes to use this evening to help him better prepare to launch his child and yours safely and sanely into the future under discussion. His favorite movie is “Terminator 2,” and he still has a T2 t-shirt he got for free from his local video store in 1993.",
+  "Warren Tappe": "Warren joined Avenues in 2016 as a science teacher in the Upper Division, hailing from the Cairo American College (Maadi, Egypt), where he spent over 20 years teaching courses such as International Baccalaureate physics, mathematics, cosmology, and physical science. Warren received a B.S. in mathematics and physics from SUNY Stonybrook and earned an M.S. in physics secondary education from SUNY New Paltz.",
+  "Todd Shy": "Todd Shy joined Avenues in its inaugural year in 2012 as a humanities instructor in the middle grades. He later became director of the Mastery program and High Intensity Practice in writing. In the fall of 2018, Todd assumed the role of head of the Upper Division and is now in his third year as head of school. He received a B.A. from the University of Virginia, completed graduate coursework at King’s College London, and obtained a master of divinity from Princeton Theological Seminary.",
+  "Emma Heath": "Emma joined Avenues in 2022 as an English teacher in the Upper Division. Previously, she worked at Dunn Boarding School in California, where she taught 9th-grade English and 11th-grade U.S. History. Before that, she worked as a journalist at the <em>San Francisco Chronicle</em>, and still occasionally indulges journalistic impulses as a freelance writer.",
+  "Nadine Bou Rached": "Nadine joined Avenues in 2018 as a science teacher in the Upper Division, with vast experience teaching high school biology and environmental sciences in the United States and Lebanon. Nadine also served as a medical research assistant at the American University of Beirut, and her work resulted in published articles in prestigious American Journals.",
+  "Sam Basuk": "Sam joined Avenues in 2018 as a technology integrator for all divisions. She is particularly interested in system integrations and technology and has a B.A. in English literature from Franklin and Marshall College and an M.A. in Educational Leadership, Policy and Advocacy from New York University. Her favorite book of all time is <em>Inspector Gamache</em>, by Louise Penny.",
+  "Lia Muschellak": "Lia joined Avenues New York from the São Paulo campus in 2019, where she remains the director of technology. She is deeply passionate about education and strongly committed to improving learning opportunities through innovative strategies. She began her career as a high school science teacher in independent schools in Brazil, where she used digital tools to expand and improve learning opportunities."
+};
+
+const person = (name) => ({ name, bio: BIOS[name] || "", photo: "" });
+
+const COURSES = {
+  "I": [
+    { title: "AI Behind the Scenes: Supporting Children’s Creativity Through Art",
+      room: "701",
+      role: "Faculty", people: [person("Scarlett Cheng"), person("Grace Hu")],
+      desc: [
+        "How can AI support children’s creativity without taking over the creative process?",
+        "In this session, we’ll explore how AI can work behind the scenes to help adults design creative experiences, help children visualize ideas, and extend or present their original artwork in new ways. Through examples from Lower Division art projects—including an interactive 3D grocery store, a Chinese character learning website, and animations created from students’ original artwork—we’ll explore possibilities that can extend from the classroom into the home. Parents will see simple demonstrations, try a short hands-on activity, and leave with practical ideas and strategies participants can use at home to create new art experiences with their children."
+      ], readings: [
+        { title: "Designing AI Tools to Support Art Learning: A Case Study of Four AI Tools to Support Creative Inquiry",
+          author: "Safinah Ali, Constructionism Conference (2025)",
+          url: "https://safinahali.com/papers/artai-tools.pdf",
+          note: "This paper offers examples of how AI tools might be designed to support creative exploration in art education, inviting us to think about the relationship between technology, artistic thinking, and the creative process." },
+        { title: "Designing Characters with AI: An Art and AI Learning Activity",
+          author: "Safinah Ali et al., EAAI (2025)",
+          url: "https://doi.org/10.1609/aaai.v39i28.35182",
+          note: "Through an art and AI learning activity, this paper explores how character design can open up conversations about creativity, imagination, and the ways children develop and express their ideas." },
+        { title: "<em>Handbook of Game-Based Learning</em>",
+          author: "Edited by Jan L. Plass, Richard E. Mayer, and Bruce D. Homer, MIT Press (2020)",
+          url: "https://mitpress.mit.edu/9780262043380/handbook-of-game-based-learning/",
+          note: "This book offers a broader perspective on how interactive experiences and playful exploration can support learning, encouraging us to consider how thoughtfully designed digital environments might create new possibilities for children." }
+      ] }
+  ],
+  "II": [
+    { title: "The Killer AI App Is Confidence: Parenting and Teaching for AI Resiliency",
+      room: "717A",
+      role: "Faculty", people: [person("JP Connolly")],
+      desc: [
+        "Every new assistive technology has offered reduced friction and offloaded cognitive tasks, but AI's ability to produce something plausible and complete, immediately, with no struggle, represents a major shift in the learning and professional environments. This capacity makes our new tools helpful for those who have already developed a sophisticated and skilled creative practice; for others without the self-confidence that comes with skill and competence, AI offers simultaneous off ramps from productive struggle, and the feelings of uncertainty that punctuate the learning process.",
+        "In this session, we will explore a common theme that has emerged from conversations and workshops I've held with educators from private, public, and charter schools in over 10 states: specifically and explicitly fostering students' academic self-confidence—a well-founded belief that they can do hard things without being rescued—is the critical skill in the AI era. We'll examine that claim in an educational context briefly, then spend the majority of our time on what this moment asks of us as parents, working through real situations from home and school. The question underneath all of them is the same: will our children grow up steering, or getting steered?"
+      ], readings: [] },
+    { title: "Cultivating a Love of Reading in an Increasingly Digital World",
+      room: "702",
+      role: "Faculty", people: [person("Marytere Garza"), person("Charlene Sung"), person("Sara Hayes")],
+      desc: [
+        "As AI and digital technologies compete for children's attention, we'll explore in interactive ways how we can help children develop a lasting love of sustained, engaged reading. Together, we’ll examine research on the power of choice in developing confident and motivated readers, reflect on our own experiences as readers, and consider how giving children greater autonomy in what they read can foster both engagement and a lifelong love of reading."
+      ], readings: [
+        { title: "<em>The Voice of Evidence in Reading Research</em>",
+          author: "Edited by Peggy McCardle and Vinita Chhabra, Brookes Publishing (2004)",
+          url: "https://www.amazon.com/Voice-Evidence-Reading-Research/dp/1557666725",
+          note: "A collection from leading reading researchers on what the evidence shows about how children learn to read, and how to put that research into practice." }
+      ] }
+  ],
+  "III": [
+    { title: "Beyond the AI Arms Race: What the US and China Can Learn from Each Other",
+      room: "705",
+      role: "Faculty", people: [{ name: "Jesse Field", photo: "",
+        bio: "Jesse Field has worked with Avenues since 2020 to help launch the Shenzhen campus, and he also served as an Avenues Online faculty member. Previously, he has worked at Bard College and Peking University Affiliated High School. Currently in his fourth year at Avenues New York, Mr. Field serves as a Mastery Teacher for the upper grades.\n\nMr. Field’s education was at Harvard, the University of Texas, the University of Minnesota and Tsinghua University. He grew up in San Antonio, Texas, but lived and worked in China for many years. Off-campus, he enjoys living in New York City for the first time, indulging in flâneurie whenever possible. His hobbies include long-distance running and cooking." }],
+      desc: [
+        "The race between the US and China to develop superintelligent systems is often cited as the reason why neither country can afford to slow down the training of frontier models. When we look beyond the competition, we see that each country has very different approaches to regulation, architecture and vision for AI. In many ways, the two approaches are complementary and, taken together, could point to a safer, more environmentally sustainable, human-centered approach to AI. In this class we’ll look at the approach that each country has taken and discuss what we might learn from getting beyond the hype of great power competition."
+      ], readings: [] }
+  ],
+  "IV": [
+
+    { title: "Field Notes from the Rewiring: What I'm Hearing from CEOs, Governors, and Universities About AI and Work",
+      room: "6th Floor Commons",
+      role: "Presenter & Avenues Parent", people: [person("Blair Miller")],
+      desc: [
+        "Avenues parent, Blair Miller is helping build RAISE US, a national nonprofit launched this year to help American workers through the AI transition. Co-chaired by former Commerce Secretary Gina Raimondo and former Indiana Governor Eric Holcomb, it has raised over $600M from Fortune 100 employers, the major AI labs, and national foundations, and works with a coalition of companies and a handful of states on what comes next for training and jobs.",
+        "Blair will share what she's learning from that work: where the evidence is solid, where it's thin, and what she's still unsure about—including what's happening to entry-level work, which is the part most relevant to anyone raising a teenager. She'll close with the question that keeps pulling her back: if machines keep getting better at producing answers, what becomes more valuable in people? Her tentative answer—what she writes about as \"the humanist renaissance\"—is judgment, attention, discernment, comfort with risk, and the ability to ask a good question.",
+        "There will be plenty of time for discussion."
+      ], readings: [] },
+    { title: "The Jobs of Tomorrow: What History Teaches Us About Preparing Our Kids for an AI World",
+      room: "Black Box Theater",
+      role: "Presenter & Avenues Parent", people: [person("Ranjan Roy")],
+      desc: [
+        "AI is changing work fast, and the relevant question on most parents' mind is what should we be teaching our kids? This session draws on over a decade inside AI, watching how the technology actually gets used by ordinary professionals rather than how it gets talked about. It pairs that ground-level view with the history of technological change, where the pattern is consistent: the thing that gets automated was never the valuable part. Through live demos and group discussion, we'll work together to identify the skills that will matter most for the jobs of today and tomorrow, and parents will leave with practical ways to help their kids build them. You don't need to understand AI to guide your child through this. You need to understand change, and you've already lived through several of them."
+      ], readings: [] }
+  ],
+  "V": [
+
+    { title: "Information Literacy, Discernment, and Thoughtful Use",
+      room: "706",
+      role: "Faculty", people: [person("Alia Methven"), person("Yi-Ching Hsieh")],
+      desc: [
+        "Information literacy and AI literacy are becoming increasingly inseparable. Today’s online environment is vast, complex, and ever-changing—never has so much information been at our fingertips. It can be challenging for students, and sometimes even adults, to distinguish what is reliable from what is not.",
+        "In this session, we’ll explore how Avenues is helping students develop the critical-thinking and information-literacy skills needed to navigate this landscape. We’ll also consider how large language models (LLMs) generate information and why understanding where information comes from—and knowing how to question, verify, and evaluate what AI produces—is becoming an essential part of information literacy.",
+        "We’ll then apply that same lens of thoughtful evaluation to a few emerging AI tools, considering them against our teaching and learning framework and exploring when and how they can meaningfully support student learning, and consider how these principles might help parents navigate these same questions at home."
+      ], readings: [] }
+  ],
+  "VI": [
+    { title: "Attention Sanctuaries",
+      room: "704",
+      role: "Faculty", people: [person("Jonathan Scolnick")],
+      desc: [
+        "Some would argue that our attention is being fracked by the biggest companies or the smartest people in tech. This is the new economy. Talking heads debate the extent of the destruction: whether AI will supercharge the depletion of our attention spans, alter our common humanity, or even obliterate the human race.",
+        "I am no authority on any of this, and this workshop will offer neither another platform for debate nor despair. Instead, it is for those of us deciding what we can do, in community, to retain—and retrain—our attention.",
+        "Attensity! A Manifesto of the Attention Liberation Movement describes attention sanctuaries as protected spaces that shield human focus from digital exploitation and restore our collective attentional agency. Let's gather to identify the attention sanctuaries already thriving in our communities and explore how we might build and strengthen them—for our students and ourselves."
+      ], readings: [
+        { title: "Will the Humanities Survive Artificial Intelligence?",
+          author: "D. Graham Burnett, The New Yorker (April 26, 2025)",
+          url: "https://www.newyorker.com/culture/the-weekend-essay/will-the-humanities-survive-artificial-intelligence",
+          note: "A Princeton historian reports from his own classroom on what AI means for the humanities, and argues their real work is asking the questions machines can’t." },
+        { title: "Attention Sanctuaries: Social Practice Guidelines and Emergent Strategies in Attention Activism",
+          author: "D. Graham Burnett and Eve Mitchell, Annals of the New York Academy of Sciences (2025)",
+          url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11998473/",
+          note: "The paper behind this session’s title: how communities can create shared spaces, and shared norms around devices, that protect human focus." },
+        { title: "The Strother School of Radical Attention",
+          author: "Kaitlyn Tiffany, The Atlantic (December 2024)",
+          url: "https://www.theatlantic.com/technology/archive/2024/12/strother-school-radical-attention/680830/",
+          note: "A visit to the Brooklyn school where people practice reclaiming their attention from screens, together." }
+      ] }
+  ],
+  "VII": [
+    { title: "AI &amp; The Student Journey To, Through, and After College",
+      room: "709",
+      role: "Faculty", people: [person("Davin Sweeney")],
+      desc: [
+        "For parents thinking about their children's education, especially when it comes to their future as independent adults, it has always been uncertain and uncomfortable. The explosion of AI onto the educational and economic stage introduces a new brand of uncertainty into the parenting equation.",
+        "Let's examine the current conversations taking place about preparing and applying to college, approaches being taken once students arrive to college, and how the labor market is changing so we can understand how best to educate ourselves, guide our children, and remain calm in the process."
+      ], readings: [] },
+    { title: "AI at MIT: A Glimpse into the Frontier of Higher Ed",
+      room: "9th Floor Commons",
+      role: "Presenter & Avenues Parent", people: [person("Sinan Aral")],
+      desc: [
+        "MIT has long been at the cutting edge of engineering and technological advancement. Avenues parent and AI Advisory Board member Sinan Aral will share his perspective on how technology and higher education are shifting in response to developments in AI.",
+        "Sinan is the David Austin Professor of Management, Marketing, IT and Data Science at the MIT Sloan School of Management and director of the MIT Initiative on the Digital Economy. An internationally recognized authority on AI, digital platforms and social media, he is also an entrepreneur, investor and author of <em>The Hype Machine</em>."
+      ], readings: [] }
+  ],
+  "VIII": [
+    { title: "What the History of Education Technology Tells Us About Today: The Dangers of Using Commercial AI Products in Education",
+      room: "703",
+      role: "Faculty", people: [person("JD Pirtle")],
+      desc: [
+        "The sudden, deliberate imposition of generative AI products, such as ChatGPT and Claude, on K-12 schools, colleges, and universities, is not a new phenomenon. The push by technology companies to intertwine their interests with schooling is part of a long history of private enterprise attempting to co-opt or capture schooling in the United States, to serve the material and ideological interests of those enterprises.",
+        "In this course, I will briefly detail the history of education technology in the United States in order to help us understand what is now at stake, and what parents, caregivers, and educators can do about it. We will discuss the dangers to teaching and learning posed by the introduction of AI chatbots and companion apps to children and adolescents, and examine what alternative technology movements and new technological imaginaries can offer to foster progressive education and social democracy in schools.",
+        "Along the way we will ask and attempt to collectively answer crucial questions about education technology, such as “Who decides what technology should be created and introduced to schools?”; “Who is creating education technology and for whom?”; “What purpose(s) does technology currently serve in education?”; “What purpose(s) should technology serve in education?”"
+      ], readings: [
+        { title: "On Redesigning EdTech Systems",
+          author: "Micah Blachman (July 22, 2026)",
+          url: "https://micahblachman.com/p/on-redesigning-edtech-systems",
+          note: "A thoughtful piece by a 12-year-old who blogs about technology: schools should build trust and teach students to behave well online, rather than relying on blocking and surveillance." },
+        { title: "A New Direction for Students in an AI World: Prosper, Prepare, Protect",
+          author: "Mary Burns, Rebecca Winthrop, Natasha Luther, Emma Venetis and Rida Karim, Brookings Institution (January 14, 2026)",
+          url: "https://www.brookings.edu/articles/a-new-direction-for-students-in-an-ai-world-prosper-prepare-protect/",
+          note: "A yearlong global study weighing the benefits and harms of AI in school, which concludes that for now the risks to children’s foundational development outweigh the gains." },
+        { title: "Ed Tech Is Profitable. It Is Also Mostly Useless",
+          author: "The Economist (January 22, 2026)",
+          url: "https://www.economist.com/united-states/2026/01/22/ed-tech-is-profitable-it-is-also-mostly-useless",
+          note: "A look at how much schools spend on education technology, and how little evidence there is that most of it improves learning." }
+      ] }
+  ],
+  "IX": [
+    { title: "Life, AI and Consciousness. Three Golden Threads?",
+      room: "710",
+      role: "Faculty", people: [person("Warren Tappe")],
+      desc: [
+        "The relationships that exist between Life, AI and Consciousness have recently surged into the spotlight for many reasons. All three will inform the coming ethical dilemmas we will face as well as the existential risks that come along with them.",
+        "We will take a close look in this session."
+      ], readings: [
+        { title: "Life, AI and Consciousness",
+          author: "Course document (Google Doc)",
+          url: "https://docs.google.com/document/d/1eQcjUMpvoA-ykd0BHXqV2qzGc2tFTEE_7tmPHCT7AfA/edit?usp=sharing",
+          note: "Material for this session, including the question of whether AI systems might themselves be conscious." },
+        { title: "<em>Being You: A New Science of Consciousness</em>",
+          author: "Anil Seth (book, 2021)",
+          url: "https://www.harvard.com/book/9781524742874",
+          note: "A neuroscientist argues that our experience of the world and of ourselves is a kind of “controlled hallucination,” rooted in being living bodies." },
+        { title: "<em>The Feeling of Life Itself: Why Consciousness Is Widespread but Can’t Be Computed</em>",
+          author: "Christof Koch (book, 2019)",
+          url: "https://www.penguinrandomhouse.com/books/648003/the-feeling-of-life-itself-by-christof-koch/",
+          note: "A leading consciousness researcher makes the case that experience is common in living things, and that a computer simulating a brain would not thereby feel anything." }
+      ] }
+  ],
+  "X": [
+    { title: "Man v. Machine: Writing in the Age of AI",
+      room: "712",
+      role: "Faculty", people: [person("Todd Shy"), person("Emma Heath"), person("Kathleen Radigan")],
+      epigraph: "“Attention without feeling, I began to learn, is only a report. An openness — an empathy — was necessary if the attention was to matter.” <span>—Mary Oliver, <em>Our World</em></span>",
+      desc: [
+        "We go to books for many reasons, but, ultimately, reading grants us a singular gift: to feel something specific to the human condition.",
+        "In this session, we will explore the relationship between text and feeling, noticing the ways through which language produces sensation. We will then ask the question: How does felt experience differ when reading texts by humans versus ones generated by machines?",
+        "By reading poetry and prose by humans and language models (Mary Oliver, Saul Bellow, ChatGPT + Gemini), we will contemplate the value of the human creative process: What does its inevitably illogical nature tell us about being alive? And what role does AI have in the great tradition of representing human experience?"
+      ], readings: [
+        { title: "The End of Reading Is Here",
+          author: "Rose Horowitch, The Atlantic (August 2026)",
+          url: "https://drive.google.com/file/d/13rvOYS7vTubYIm5A209hswvdAq6PPR-C/view?usp=sharing",
+          note: "Americans read far less than they used to, the article argues, and the age of reading may turn out to be a brief chapter in human history." }
+      ] }
+  ],
+  "XI": [
+    { title: "AI and Health: Better Care, Without Losing Connection",
+      room: "713",
+      role: "Faculty", people: [person("Nadine Bou Rached")],
+      desc: [
+        "What might artificial intelligence change about how we understand health and care for one another? This workshop explores AI’s potential in health research and everyday care, with particular attention to individuals with complex developmental and health needs, whether they face communication challenges, difficult diagnoses, or require ongoing support to stay safe and well. Through real-world examples, we’ll explore genetic and genomic research, communication tools, technologies that could make medical testing more accessible, and possible future treatment technologies and uses of assistive robotics. We’ll consider what these developments might offer individuals and caregivers, distinguishing promising possibilities from what remains uncertain.",
+        "Care, however, is about more than finding the right tools. Everyday human interactions can offer opportunities to communicate, learn, build trust, and connect. Could AI strengthen these opportunities, or might relying on it too heavily reduce them? We’ll also consider questions of privacy, consent, reliability, and whose decisions shape the support someone receives. Rather than assuming that more technology means better care, we’ll explore where AI might help, where it could cause harm, and what we should be careful not to lose. No science or technology background is needed. Just bring your curiosity."
+      ], readings: [
+        { title: "To Stay in Her Home, She Let In an A.I. Robot",
+          author: "The New York Times (February 12, 2026)",
+          url: "https://www.nytimes.com/2026/02/12/us/elliq-ai-robot-senior-companion.html",
+          note: "An 85-year-old woman lives with ElliQ, a tabletop AI companion, raising the session’s central question: can a machine support care and connection without replacing the human kind?" }
+      ] }
+  ],
+  "XII": [
+    { title: "Vibe Coding: Understanding and Building with AI",
+      room: "714",
+      role: "Faculty", people: [person("Chadd Clairmont"), person("Sam Basuk")],
+      desc: [
+        "What if you could get up to speed on what AI can do—and experience it for yourself—in a single supportive session? In this interactive session, we will explore the emerging world of vibe coding, using conversational AI tools to design and build a functioning website—no previous programming experience required. Along the way, we’ll explore how web development has evolved, experiment with practical ways AI can support everyday life, and consider what these rapidly changing tools mean for our children as learners and creators.",
+        "This is a session for anyone who wants to quickly understand what AI can now do. Come ready to experiment, ask questions, and perhaps leave having built something you never expected to build yourself."
+      ], readings: [
+        { title: "A Comprehensive Guide to Vibe Coding Tools",
+          author: "Madhukar Kumar, Medium (2025)",
+          url: "https://medium.com/madhukarkumar/a-comprehensive-guide-to-vibe-coding-tools-2bd35e2d7b4f",
+          note: "A tour of the AI tools that let you build software by describing what you want, from all-in-one app builders to coding assistants, and what each is best suited for." }
+      ] },
+    { title: "Designing AI for Inquiry: From Answer Machines to Thinking Partner",
+      room: "715",
+      role: "Faculty", people: [person("Chris Richter")],
+      desc: [
+        "Artificial intelligence can give students answers in seconds—but what if we designed AI to ask better questions instead? In this hands-on workshop, participants will explore how educators can create AI-powered learning experiences that encourage inquiry, reflection, and deeper thinking. Using a classroom chatbot developed for a 9th-grade humanities course as a case study, we’ll examine how AI can act as a mentor: challenging assumptions, asking follow-up questions, helping students work with evidence, and guiding them through complex problems without simply doing the thinking for them.",
+        "Participants will experience an inquiry-based AI system from a student’s perspective, look behind the scenes at how it was designed, and consider how similar approaches could work across different subjects and age levels. No technical or AI experience is necessary—just curiosity about what teaching and learning might look like when AI becomes a thinking partner rather than an answer machine."
+      ], readings: [] }
+  ],
+  "XIII": [
+    { title: "The AI Revolution: Have We Been Here Before?",
+      room: "716",
+      role: "Faculty", people: [person("Lia Muschellak")],
+      desc: [
+        "What if the future we fear and the future we hope for are both distracting us from the one we could build? Imagine your child growing up in a world where learning has no ceiling, creativity has fewer barriers, and once-impossible problems finally have solutions. Now imagine that same world making it harder to think independently, know whom to trust, or find a place to belong. Both stories sound plausible. Neither is the whole story.",
+        "Tomorrow is unknown territory, but some of our hopes and fears have been here before. Another technology once promised to transform human life while leaving even its creators wondering whether they should stop. What followed might surprise you. It might also change where you look for clues about what comes next.",
+        "Between “AI will save us” and “AI will ruin us” lies a much more interesting conversation about possibility, responsibility, and the choices that are still ours to make. This session is an invitation into that space. We do not need to know exactly what tomorrow holds to have a hand in shaping it. But we do need to ask: who is choosing the future while the rest of us are busy predicting it?"
+      ], readingsNote: "All three are optional; no pre-reading required.",
+      readings: [
+        { title: "Asilomar 1975: DNA Modification Secured",
+          author: "Paul Berg, Nature (2008)",
+          url: "https://www.nature.com/articles/455290a",
+          note: "Two pages by the scientist who called a halt to his own field, looking back thirty-three years later at whether it worked." },
+        { title: "<em>The Code Breaker</em>",
+          author: "Walter Isaacson (2021)",
+          url: "https://a.co/d/0az6iCiu",
+          note: "The long read: how a handful of scientists and the institutions around them shaped what gene editing became." },
+        { title: "There Is Something We Have to Do Right Now About A.I.",
+          author: "Ezra Klein, The New York Times (September 20, 2026)",
+          url: "https://www.nytimes.com/2026/09/20/opinion/ai-ban-self-improvement-recursive-models.html",
+          note: "A current argument that slowing down is not enough. Worth reading next to the Berg essay to see what the two have in common." }
+      ] }
+  ]
+};
+
+/* ---------- Blackbird (drawn, not borrowed) ---------- */
+/* A perched blackbird, feet at (0,0), facing right. */
+const PERCHED = `
+  <g class="ptail">
+    <path d="M -9 -35 C -22 -21 -36 -5 -49 8 L -56 12 L -51 14.5 L -43 12.5 C -29 -1 -15 -15 -3 -26 Z" fill="#070709"/>
+    <path d="M -11 -27 L -50 11 M -7 -30 L -46 12.5" stroke="#23242d" stroke-width=".7" fill="none"/>
+  </g>
+  <path d="M 13 -12 L 10 -1 M 22 -14 L 20 -1" stroke="#3a2f29" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 3 0 L 17 0 M 12 0 L 27 0 M 10 0 L 5 1.5 M 20 0 L 15 1.5" stroke="#3a2f29" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M -14 -40 C -14 -58 -2 -72 16 -77 C 26 -80 36 -78 42 -70 C 46 -62 44 -48 38 -34 C 32 -20 22 -12 12 -10 C 2 -8 -8 -14 -12 -24 C -14 -30 -14 -36 -14 -40 Z" fill="url(#bbBody)"/>
+  <path d="M 30 -70 C 16 -66 2 -54 -6 -40 C -14 -28 -22 -16 -31 -5 C -25 -7 -19 -11 -15 -15 C -17 -9 -19 -5 -21 -1 C -8 -12 4 -22 14 -34 C 24 -45 30 -56 30 -70 Z" fill="url(#bbWing)"/>
+  <path d="M 22 -57 C 10 -47 0 -35 -10 -21 M 16 -45 C 6 -35 -4 -23 -16 -10 M 10 -35 C 2 -27 -8 -17 -22 -4" stroke="#2c2d38" stroke-width=".7" fill="none"/>
+  <path d="M -8 -55 C 0 -66 11 -73 23 -76" stroke="rgba(120,138,196,.35)" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <g class="phead">
+    <path d="M 22 -82 C 24 -94 42 -98 50 -90 C 54 -86 55 -82 54 -79 C 50 -72 40 -68 32 -70 C 26 -72 21 -76 22 -82 Z" fill="url(#bbHead)"/>
+    <path d="M 52 -86 C 58 -85 64 -83 68.5 -81 C 63 -79 58 -78 52 -77 C 51 -80 51 -83 52 -86 Z" fill="#E0937C"/>
+    <path d="M 52.5 -81.6 L 64 -81.2" stroke="#b5664f" stroke-width=".6"/>
+    <g class="eye"><circle cx="46" cy="-86" r="2.7" fill="#E0937C"/><circle cx="46" cy="-86" r="1.55" fill="#000"/><circle cx="45.4" cy="-86.6" r=".5" fill="#fff" opacity=".85"/></g>
+  </g>`;
+
+const bird = (cls = "") => `<svg class="bird ${cls}" viewBox="-58 -100 128 114" aria-hidden="true" focusable="false">${PERCHED}</svg>`;
+
+const app = document.getElementById("app");
+const idx = (n) => WAYS.findIndex(w => w.n === n);
+
+function renderBio(p) {
+  const pic = p.photo ? `<img src="${p.photo}" alt="">` : bird();
+  const text = p.bio
+    ? p.bio.split(/\n\s*\n/).map(t => `<p>${t}</p>`).join("")
+    : `<p class="placeholder">A short bio for ${p.name.split(" ")[0]} is on its way.</p>`;
+  return `<div class="bio"><div class="avatar">${pic}</div><div><h4>${p.name}</h4>${text}</div></div>`;
+}
+
+function renderReadings(list, names) {
+  if (!list.length) {
+    return `<ul class="readings">
+      <li><span class="placeholder">${names} will share course readings and resources here.</span></li>
+      <li aria-hidden="true"><span class="empty"></span><span class="empty" style="width:45%"></span></li>
+      <li aria-hidden="true"><span class="empty" style="width:60%"></span><span class="empty" style="width:35%"></span></li>
+    </ul>`;
+  }
+  return `<ul class="readings">${list.map(r => `
+    <li>${r.url ? `<a href="${r.url}" target="_blank" rel="noopener">${r.title}</a>` : `<b>${r.title}</b>`}
+      ${r.author ? `<span class="by">${r.author}</span>` : ""}
+      ${r.note ? `<span class="note">${r.note}</span>` : ""}
+    </li>`).join("")}</ul>`;
+}
+
+function joinNames(people) {
+  const n = people.map(p => p.name);
+  return n.length < 3 ? n.join(" and ") : n.slice(0, -1).join(", ") + ", and " + n.at(-1);
+}
+
+function renderWay(n) {
+  const i = idx(n); const w = WAYS[i];
+  const prev = WAYS[(i + 12) % 13], next = WAYS[(i + 1) % 13];
+  document.title = `${w.n}. ${w.name} · Thirteen Ways of Looking at AI`;
+  app.className = "way";
+  app.style.setProperty("--c", w.c);
+  app.style.setProperty("--e", w.e);
+  app.innerHTML = `
+  <section class="hero">
+    <div class="wrap">
+      ${topNav("")}
+      <div class="hero-body">
+        <div>
+          <div class="numeral"${w.numeralLight ? ' style="color:#0b0f22"' : ""}>${w.n}</div>
+          <h1>${w.name}</h1>
+        </div>
+        <figure class="epigraph" style="margin:0">
+          ${bird()}
+          <p>${w.stanza}</p>
+          <cite>Wallace Stevens, stanza ${w.n}</cite>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  ${COURSES[n].map((c, ci) => `
+  <article class="course" id="course-${ci + 1}">
+    <div class="wrap">
+      <h2>${c.title}</h2>
+      <p class="faculty"><b>${c.role}:</b> ${joinNames(c.people)}</p>
+      ${c.room ? `<p class="room"><b>Room:</b> ${c.room}</p>` : ""}
+      <hr class="rule">
+      <div class="desc">
+        ${c.epigraph ? `<blockquote>${c.epigraph}</blockquote>` : ""}
+        ${c.desc.map(p => `<p>${p}</p>`).join("")}
+      </div>
+      <div class="extras">
+        <section>
+          <h3>About the ${c.people.length > 1 ? "faculty" : (c.role.startsWith("Presenter") ? "presenter" : "instructor")}</h3>
+          ${c.people.map(renderBio).join("")}
+        </section>
+        <section>
+          <h3>Course Readings/Resources</h3>
+          ${c.readingsNote ? `<p class="readings-note">${c.readingsNote}</p>` : ""}
+          ${renderReadings(c.readings, joinNames(c.people))}
+        </section>
+      </div>
+    </div>
+  </article>`).join("")}
+  ${COURSES[n].length ? "" : `
+  <article class="course">
+    <div class="wrap">
+      <p class="lens-empty">No course is offered through this lens this time, but it remains one of the thirteen ways of looking. Browse the <a href="#/catalog">course catalog</a> for this evening’s sessions.</p>
+    </div>
+  </article>`}
+
+  <nav class="wrap pager" aria-label="Catalog navigation">
+    <a class="btn" href="#/catalog">MENU</a>
+    <a class="btn prev" href="#/${prev.n}" aria-label="Previous: ${prev.name}">PREVIOUS</a>
+    <div class="next-way">
+      <a class="btn" href="#/${next.n}" aria-label="Next: ${next.name}">NEXT</a>
+      <small>${next.n}. ${next.name}</small>
+    </div>
+  </nav>
+  <footer><div class="wrap">
+    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
+    <p class="imprint">Avenues New York · Thirteen Ways of Looking at AI · October 2026</p>
+  </div></footer>`;
+}
+
+
+const topNav = () => `
+  <div class="hero-top">
+    <a href="#/">Thirteen Ways of Looking at AI</a>
+    <nav aria-label="Evening">
+      <a href="#/about">About the evening</a>
+      <a href="#/agenda">Agenda</a>
+      <a href="#/ema"><i>Ema</i></a>
+      <a href="#/catalog">Course catalog</a>
+    </nav>
+  </div>`;
+
+const spectrum = () => `<div class="spectrum">${WAYS.map(w =>
+  `<a href="#/${w.n}" style="background:${w.c}" title="${w.n}. ${w.name}" aria-label="${w.n}. ${w.name}"></a>`).join("")}</div>`;
+
+const FOOTER = `<footer><div class="wrap">
+    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
+    <p class="imprint">Avenues New York · Thirteen Ways of Looking at AI · October 2026</p>
+  </div></footer>`;
+
+const AGENDA = [
+  { time: "5:00–5:15 p.m.", what: "Arrival", detail: "Gather in Food" },
+  { time: "5:15–5:20 p.m.", what: "Welcome, followed by departure for classrooms" },
+  { time: "5:30–6:30 p.m.", what: "Small-group courses", detail: "Thirteen lenses, many courses; you’ll take part in one course", courses: true },
+  { time: "6:30–6:45 p.m.", what: "Transition to the panel discussion", detail: "Head to Food" },
+  { time: "6:45–7:45 p.m.", what: "Panel discussion", detail: "In Food, with members of our AI Advisory Board", feature: true },
+  { time: "7:45–8:30 p.m.", what: "Food, drinks, and conversation", detail: "Make an <i>ema</i> for our community art project", ema: true }
+];
+
+
+
+/* ---------- Ema page ---------- */
+/* Blackbird plaque: the supplied standing-bird silhouette, painted black. */
+const BIRD_PLAQUE = "M 402.4 21.8 C 386.4 25.2 375.9 27.7 367.5 31.1 C 354.9 54.6 350.7 84.0 348.6 113.4 C 342.3 155.4 315.0 186.9 268.8 201.6 L 243.6 205.8 C 242.8 222.6 249.9 239.4 256.2 251.2 C 273.0 251.2 298.2 252.8 315.0 258.3 L 300.3 266.7 L 294.8 260.8 L 268.8 260.4 L 256.2 262.9 L 231.0 266.7 L 220.5 268.0 L 223.4 261.2 L 247.0 255.8 C 240.2 243.6 231.0 222.6 220.5 205.8 L 142.8 213.4 L 119.7 220.5 L 131.5 194.0 L 18.9 228.9 C 4.2 231.8 0.0 222.6 10.5 216.3 C 88.2 176.4 172.2 121.8 235.2 84.0 C 256.2 71.4 273.0 54.6 281.4 42.0 C 294.8 13.4 315.0 3.4 340.2 3.4 C 359.1 4.2 371.7 10.1 378.0 12.6 L 402.4 21.8 Z";
+// Centre line of the body at a given height, so each line of handwriting sits inside the bird.
+const BODY_MID = [[60, 297], [80, 285], [100, 268], [120, 249], [140, 226], [160, 202], [180, 174]];
+const midAt = (y) => { for (let i = 1; i < BODY_MID.length; i++) { const [y0, x0] = BODY_MID[i - 1], [y1, x1] = BODY_MID[i];
+  if (y <= y1) return x0 + (x1 - x0) * (Math.max(y, y0) - y0) / (y1 - y0); } return BODY_MID[BODY_MID.length - 1][1]; };
+const plaque = (cls, lines, lang, size, lead) => `
+  <svg class="${cls}" viewBox="0 -50 420 330" role="img" aria-label="A blackbird ema painted black, with a wish written in white pen">
+    <path d="M268 64 L268 -50" stroke="#000" stroke-width="2.5"/>
+    <path d="${BIRD_PLAQUE}" fill="#0a0a0c" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="268" cy="64" r="6" fill="var(--blue)" stroke="#2a2a30" stroke-width="2"/>
+    <circle cx="349" cy="20" r="4.5" fill="none" stroke="#f4f4f0" stroke-width="1.8"/>
+    <circle cx="350" cy="20" r="1.5" fill="#f4f4f0"/>
+    <g class="pen pen-${lang}" style="font-size:${size}px">
+      ${lines.map((l, i) => { const y = lead[0] + i * lead[1]; return `<text x="${(midAt(y - size * 0.35) + (i % 2 ? 2 : -2)).toFixed(1)}" y="${y}" text-anchor="middle" lang="${lang}">${l}</text>`; }).join("")}
+    </g>
+  </svg>`;
+
+function renderEma() {
+  document.title = "Ema: Wishes Made Visible · Thirteen Ways of Looking at AI";
+  app.className = "page ema-page";
+  app.style.setProperty("--c", "#3E69B2");
+  app.innerHTML = `
+  <section class="hero ema-hero">
+    <div class="wrap">
+      ${topNav()}
+      <div class="ema-hero-body">
+        <h1><i>Ema</i>: Wishes Made Visible</h1>
+        <p class="ema-hero-sub">A community art project during food, drinks, and conversation, 7:45–8:30 p.m. in Food.</p>
+      </div>
+      <div class="ema-rack">
+        <figure class="ema-hang h1">
+          ${plaque("ema-bird", ["I hope you", "trust your own", "voice, especially", "when a machine sounds", "surer than you feel."], "en", 18, [94, 21])}
+        </figure>
+        <figure class="ema-hang h2">
+          ${plaque("ema-bird", ["Espero que", "confíes en tu", "propia voz, sobre", "todo cuando una", "máquina suene más", "segura de lo que tú", "te sientes."], "es", 15, [88, 17])}
+        </figure>
+        <figure class="ema-hang h3">
+          ${plaque("ema-bird", ["愿你相信", "自己的声音，", "尤其是当机器", "听起来比你", "更笃定的时候。"], "zh-Hans", 17, [94, 21])}
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose ema-prose">
+    <div class="wrap"><div>
+      <p>At Shinto shrines across Japan, visitors write their hopes on small wooden plaques called <i>ema</i> (<span lang="ja">絵馬</span>, literally “picture horse”) and hang them on racks near the shrine, where they rustle together like a chorus of private prayers made public.</p>
+        <p>The name holds the history. In ancient Japan, people who could afford it offered real horses to the shrines, since horses were believed to carry messages to the <i>kami</i>, the spirits who dwell in the natural world. Over the centuries the living horse became a sculpted one, then a painted one, and finally a simple wooden tablet that anyone could offer. The messenger shrank, but the act stayed the same: put your wish into a form that can travel to something larger than yourself.</p>
+        <p>In Japan, today’s <i>ema</i> carry wishes from locals and tourists alike. You might find wishes for passing an exam, healing an illness, or peace and abundance on earth. They’re often left facing outward, so passersby can read one another’s hopes.</p>
+      <h2 class="ema-h">Your blackbird</h2>
+      <div class="ema-prompt">
+        <p class="ema-prompt-label">Tonight’s prompt</p>
+        <p class="ema-prompt-text">Write what you hope for your children, or for any child, as they grow up in a world with AI.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <nav class="wrap pager" aria-label="Site navigation">
+    <a class="btn" href="#/agenda">AGENDA</a>
+    <a class="btn prev" href="#/catalog">MENU</a>
+  </nav>
+  ${FOOTER}`;
+}
+
+function renderHome() {
+  document.title = "Thirteen Ways of Looking at AI · Avenues New York";
+  app.className = "home";
+  app.innerHTML = `
+  <section class="cover">
+    <div class="wrap">
+      <p class="school"><b>Avenues</b> <span>New York</span></p>
+      <h1 class="title"><span class="word">Thirteen</span> <span class="word">Ways</span> <span class="word">of</span><br><span class="word">Looking</span> <span class="word">at…</span>${bird()}</h1>
+      <p class="subject"><span class="word">Artificial</span><br><span class="word">Intelligence</span></p>
+    </div>
+  </section>
+
+  <section class="prose home-section" id="about" aria-labelledby="about-title">
+    <div class="wrap"><div>
+      <h2 id="about-title">An evening of learning and conversation</h2>
+      <p class="when"><b>Thursday, October 15</b><span>5:00–8:30 p.m. at 259 10th Avenue</span></p>
+      <p class="lead">For several years, Avenues has been studying AI. Last fall we shared our guiding principles; since then we have kept building our curriculum and formed an AI Advisory Board. Still, the questions keep evolving:</p>
+      <ul class="questions">
+        <li>Where is AI now, and where is it headed?</li>
+        <li>What can it do today that it couldn’t a few months ago?</li>
+        <li>Which ethical issues matter most?</li>
+        <li>How is it reshaping higher education, and the economy our students will enter after it?</li>
+        <li>What remains essential to a human-centered education?</li>
+      </ul>
+      <p>Thirteen Ways of Looking at AI is an evening for Avenues parents to explore these questions with us. Our courses are grouped into thirteen lenses, from art and creativity to family life, the future of work, and the purposes of education. You’ll look closely at AI through one lens, then step back with all of us to ask what the whole picture might mean for our children and the world they will inherit.</p>
+      ${spectrum()}
+      <p>The name comes from Wallace Stevens’s poem “<a href="#/poem">Thirteen Ways of Looking at a Blackbird</a>,” which approaches a single subject from many angles. One lens would miss too much, and even thirteen won’t exhaust AI, but they give us a place to start, together. We hope this is the first of several Thirteen Ways gatherings.</p>
+    </div></div>
+  </section>
+
+  <section class="home-section agenda-section" id="agenda" aria-labelledby="agenda-title">
+    <div class="wrap">
+      <h2 id="agenda-title">Agenda</h2>
+      <p class="when"><b>Thursday, October 15</b><span>5:00–8:30 p.m. at 259 10th Avenue</span></p>
+      <ol class="agenda">
+        ${AGENDA.map(a => `
+          <li class="${a.courses || a.feature ? "feature" : ""}">
+            <span class="time">${a.time}</span>
+            <span class="what">${a.what}
+              ${a.detail ? `<span class="detail">${a.detail}</span>` : ""}
+              ${a.courses ? spectrum() + `<a class="detail" href="#/catalog">Browse the course catalog</a>` : ""}
+              ${a.ema ? `<a class="detail" href="#/ema">About the <i>ema</i> project</a>` : ""}
+            </span>
+          </li>`).join("")}
+      </ol>
+    </div>
+  </section>
+
+  <section class="poem" id="poem" aria-labelledby="poem-title">
+    <div class="wrap">
+      <h2 id="poem-title">Thirteen Ways <span class="perch-word">of${bird()}</span><br>Looking at a Blackbird</h2>
+      <p class="by">by Wallace Stevens</p>
+      <div class="stanzas">
+        ${WAYS.map(w => `
+          <div class="stanza"><a href="#/${w.n}" aria-label="Stanza ${w.n}: go to ${w.name}">
+            <span class="numeral">${w.n}</span><p>${w.stanza}</p>
+          </a></div>`).join("")}
+      </div>
+      <p class="credit">Wallace Stevens, “Thirteen Ways of Looking at a Blackbird,” first collected in <em>Harmonium</em> (1923). Each stanza opens its course section.</p>
+    </div>
+  </section>
+
+  <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+    <div class="wrap">
+      <h2 id="catalog-title">Course catalog</h2>
+      <ol class="ways">
+        ${WAYS.map(w => `
+          <li><a href="#/${w.n}" style="--c:${w.c}">
+            <span class="numeral">${w.n}</span><span>${w.name}</span>
+          </a></li>`).join("")}
+      </ol>
+    </div>
+  </section>
+  ${FOOTER}`;
+}
+
+/* ---------- Opening flock ---------- */
+
+
+let introPlayed = false;
+const calmMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================================================================
+   Opening: thirteen blackbirds, one after another, each with its own
+   choreographed flight. Words appear as birds pass over them; the
+   thirteenth bird lands on the title.
+   ================================================================ */
+
+// Wing outline (relative to the shoulder; "up" is negative y).
+const WING = [[0,0],[10,-14],[18,-30],[22,-46],[21,-58],[17,-70],[12,-61],[9,-70],[4,-59],[0,-67],
+  [-4,-56],[-9,-62],[-11,-51],[-17,-54],[-18,-45],[-24,-44],[-26,-35],[-30,-29],[-30,-20],[-28,-10],[-22,-3],[-12,1]];
+const COVERTS = [[0,0],[10,-14],[16,-27],[9,-33],[-5,-35],[-18,-31],[-24,-21],[-20,-8],[-10,0]];
+const SHAFTS = [[[14,-38],[17,-70]],[[8,-38],[9,-70]],[[2,-38],[0,-67]],[[-4,-36],[-9,-62]],[[-10,-34],[-17,-54]]];
+
+const FLYING = `
+  <g class="fgroup">
+    <path class="w-far" fill="#08080b"/>
+    <g class="legs" opacity="0">
+      <path d="M 40 8 L 47 21 L 54 23 M 47 21 L 45 27 M 48 7 L 57 20 L 64 21 M 57 20 L 56 26" stroke="#3a2f29" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    </g>
+    <path d="M -12 -3 L -38 -8 L -42 -4 L -43 0 L -42 4 L -38 7 L -12 5 Z" fill="#070709"/>
+    <path d="M -14 0 L -42 0 M -14 -2 L -39 -6 M -14 3 L -39 5.5" stroke="#23242d" stroke-width=".6" fill="none"/>
+    <path d="M -16 1 C -8 -10 14 -15 34 -13 C 46 -12 55 -15 62 -19 C 70 -25 85 -24 90 -15 C 92 -11 91 -6 88 -3 C 81 2 73 4 65 6 C 51 12 31 15 13 13 C -1 11 -10 7 -16 1 Z" fill="url(#bbBody)"/>
+    <path d="M 4 -9 C 20 -14 40 -14 58 -16" stroke="rgba(120,138,196,.3)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M 89 -12 C 95 -11 100 -9.5 104.5 -8.2 C 99.5 -6.6 94 -5.6 89 -5 Z" fill="#E0937C"/>
+    <circle cx="82" cy="-15" r="2.4" fill="#E0937C"/><circle cx="82" cy="-15" r="1.4" fill="#000"/><circle cx="81.5" cy="-15.5" r=".45" fill="#fff" opacity=".85"/>
+    <path class="w-near" fill="url(#bbWing)"/>
+    <path class="w-cov" fill="#1d1e27" opacity=".85"/>
+    <path class="w-shafts" stroke="#2b2c37" stroke-width=".55" fill="none"/>
+  </g>`;
+
+function playIntro() {
+  const cover = app.querySelector(".cover");
+  if (!cover) return;
+  const words = [...cover.querySelectorAll(".word")];
+  const titleBird = cover.querySelector(".title .bird");
+  cover.classList.add("intro");
+
+  const back = document.createElement("div"), front = document.createElement("div");
+  back.className = "sky back"; front.className = "sky front";
+  [back, front].forEach(l => l.setAttribute("aria-hidden", "true"));
+  const count = document.createElement("div");
+  count.className = "count"; count.setAttribute("aria-hidden", "true");
+  cover.insertBefore(back, cover.firstChild);
+  cover.append(front, count);
+
+  const W = innerWidth, H = innerHeight, U = Math.min(W, H);
+  const P = (x, y) => [x * W, y * H];
+  const wr = (i) => { const r = words[i].getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, l: r.left, t: r.top, w: r.width, h: r.height }; };
+  const Wd = words.map((_, i) => wr(i));
+  const at = (i, fx, fy) => [Wd[i].x + fx * W, Wd[i].y + fy * H];
+  const TAU = Math.PI * 2, DEG = 180 / Math.PI;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  // Where the last bird will sit: exactly where the title's perched bird is drawn.
+  const tb = titleBird.getBoundingClientRect();
+  const kFinal = tb.width / 128;
+  const feetFinal = [tb.left + tb.width * (58 / 128), tb.top + tb.height * (100 / 114)];
+  // Birds are steered by their body centre, which sits 45 units above the feet.
+  const perchAt = (feet, k) => [feet[0], feet[1] - 45 * k];
+
+  // Landing on the letters of "at…" (on top of the "a").
+  const atW = Wd[4];
+  const sz = (f) => f * U * 1.35;
+  const kOf = (px) => px / 180;
+
+  /* ----------------------------------------------------------------
+     Choreography: 13 birds. Each has a start time, a size (as a share
+     of the screen), an entry point, and a sequence of flights (cubic
+     curves; "smooth" continues the previous curve's direction) and perches.
+     ---------------------------------------------------------------- */
+  const S = [];
+  // I — glides across "Thirteen", lands in the far upper-right corner, rests, flies off.
+  S.push({ t: 200, px: sz(.16), from: [-0.08 * W, Wd[0].y - .12 * H], segs: [
+    { c1: P(.08, .12), c2: at(0, -.12, .05), to: at(0, .1, -.02), dur: 1700, ease: "linear", wing: "auto", reveal: 0, revealAt: .6 },
+    { c1: "smooth", c2: P(.84, .05), to: P(.9, .1), dur: 1700, ease: "out", land: true },
+    { perch: 900 },
+    { c1: P(.95, .04), c2: P(1.02, .02), to: P(1.15, -.1), dur: 1200, ease: "in" } ] });
+  // II — a steep, banking climb from the lower left, out through the top.
+  S.push({ t: 1500, px: sz(.2), from: P(-.08, 1.06), segs: [
+    { c1: P(.12, .9), c2: P(.2, .66), to: P(.3, .42), dur: 1400, ease: "linear", wing: "flap", hz: 1.25 },
+    { c1: "smooth", c2: P(.42, .06), to: P(.47, -.16), dur: 1100, ease: "linear", wing: "flap", hz: 1.35 } ] });
+  // III — dives from above through "Ways", pulls up and away to the right.
+  S.push({ t: 2300, px: sz(.2), from: at(1, -.12, -.6), segs: [
+    { c1: at(1, -.1, -.3), c2: at(1, -.08, -.02), to: at(1, .04, .05), dur: 1200, ease: "linear", wing: "glide", reveal: 1, revealAt: .8 },
+    { c1: "smooth", c2: P(.84, .2), to: P(1.15, -.02), dur: 1400, ease: "linear", wing: "flap" } ] });
+  // IV — a large, close bird glides low from the right across "of".
+  S.push({ t: 3200, px: sz(.34), from: [1.2 * W, Wd[2].y + .2 * H], segs: [
+    { c1: [.98 * W, Wd[2].y + .14 * H], c2: at(2, .1, .02), to: at(2, -.04, 0), dur: 1500, ease: "linear", wing: "glide", reveal: 2, revealAt: .88 },
+    { c1: "smooth", c2: [.18 * W, Wd[2].y - .08 * H], to: [-.3 * W, Wd[2].y - .06 * H], dur: 1700, ease: "linear", wing: "flap", hz: .75 } ] });
+  // V — a tiny, distant bird crosses high behind the lettering.
+  S.push({ t: 3700, px: sz(.07), layer: "back", op: .8, from: P(-.05, .09), segs: [
+    { c1: P(.3, .03), c2: P(.62, .13), to: P(1.06, .06), dur: 4200, ease: "linear", wing: "flap", hz: 1.1 } ] });
+  // VI — a small bird bounds along (flap, fold, flap) over "Looking".
+  S.push({ t: 4500, px: sz(.14), from: [-.1 * W, Wd[3].y + .05 * H], segs: [
+    { c1: [.04 * W, Wd[3].y + .02 * H], c2: at(3, -.12, -.02), to: at(3, .04, -.01), dur: 1400, ease: "linear", wing: "bound", reveal: 3, revealAt: .75 },
+    { c1: "smooth", c2: [.8 * W, Wd[3].y + .07 * H], to: [1.12 * W, Wd[3].y + .03 * H], dur: 1600, ease: "linear", wing: "bound" } ] });
+  // VII — comes in from the right and lands on top of "at…", looks around, leaves.
+  const k7 = kOf(sz(.15));
+  const feet7 = [atW.l + atW.w * .2, atW.t + atW.h * .3];
+  S.push({ t: 0, px: sz(.17), from: [1.12 * W, atW.y - .32 * H], segs: [
+    { c1: [.92 * W, atW.y - .34 * H], c2: at(4, .12, -.1), to: at(4, -.02, .02), dur: 1400, ease: "linear", wing: "glide", reveal: 4, revealAt: .8 },
+    { c1: "smooth", c2: [.18 * W, atW.y - .22 * H], to: [-.15 * W, atW.y - .36 * H], dur: 900, ease: "linear", wing: "flap", hz: 1.2 } ] });
+  // VIII — a huge, soft-focus bird sweeps past in the foreground.
+  S.push({ t: 6400, px: sz(1.05), blur: 3, from: P(-.45, .95), segs: [
+    { c1: P(.15, .78), c2: P(.7, .84), to: P(1.45, .66), dur: 1700, ease: "linear", wing: "flap", hz: .7 } ] });
+  // IX — circles down and threads through "Artificial" from the left.
+  S.push({ t: 6700, px: sz(.2), from: P(.97, -.1), segs: [
+    { c1: P(1.0, .2), c2: at(5, .36, -.2), to: at(5, .18, -.12), dur: 1100, ease: "linear", wing: "glide" },
+    { c1: "smooth", c2: at(5, -.28, -.18), to: at(5, -.22, .02), dur: 1000, ease: "linear", wing: "flap" },
+    { c1: "smooth", c2: at(5, -.06, .05), to: at(5, .12, .01), dur: 900, ease: "linear", wing: "flap" },
+    { c1: "smooth", c2: P(.8, .92), to: P(.95, 1.18), dur: 1100, ease: "linear", wing: "glide" } ] });
+  // X — lands in the far lower-left corner, preens, and slips away.
+  const k10 = kOf(sz(.13));
+  const feet10 = P(.08, .95);
+  S.push({ t: 7400, px: sz(.13), from: P(-.1, .58), segs: [
+    { c1: P(.12, .6), c2: P(.12, .86), to: perchAt(feet10, k10), dur: 1600, ease: "out", land: true },
+    { perch: 800, preen: true },
+    { c1: [feet10[0] + .02 * W, feet10[1] - .16 * H], c2: P(.02, .62), to: P(-.14, .5), dur: 1100, ease: "in" } ] });
+  // XI — rises from below right and sweeps back through "Intelligence".
+  S.push({ t: 8600, px: sz(.24), from: [1.14 * W, Wd[6].y + .2 * H], segs: [
+    { c1: [.95 * W, Wd[6].y + .17 * H], c2: at(6, .22, .06), to: at(6, .04, 0), dur: 1400, ease: "linear", wing: "glide" },
+    { c1: "smooth", c2: [.06 * W, Wd[6].y - .34 * H], to: [-.16 * W, Wd[6].y - .56 * H], dur: 1500, ease: "linear", wing: "flap", hz: 1.2 } ] });
+  // XII — a wide, unhurried arc over the top, behind the words.
+  S.push({ t: 9200, px: sz(.12), layer: "back", from: P(-.1, .3), segs: [
+    { c1: P(.2, -.06), c2: P(.72, -.06), to: P(1.1, .22), dur: 2600, ease: "linear", wing: "auto", hz: .9 } ] });
+  // XIII — crosses the lettering, turns, and settles on the title.
+  const final = perchAt(feetFinal, kFinal);
+  S.push({ t: 0, px: 180 * kFinal, final: true, from: P(1.08, .92), segs: [
+    { c1: P(.86, .94), c2: at(5, .22, .09), to: at(5, -.08, .01), dur: 1500, ease: "linear", wing: "flap", reveal: 5, revealAt: .72 },
+    { c1: "smooth", c2: [final[0] - .2 * W, final[1] - .16 * H], to: final, dur: 1300, ease: "out", land: true, revealOnLand: 6 },
+    { perch: Infinity } ] });
+
+  // Pacing: the words appear at a steady reading pace (about one every 0.65 s).
+  // Birds that reveal a word are started so they cross it on cue; the others fill
+  // in around them. Every other bird is gone before "Artificial" appears, and the
+  // last bird lands on the title as "Intelligence" appears.
+  const DUR = 0.5;
+  const WORD_TIMES = [550, 1200, 1850, 2500, 3150, 3800];   // Thirteen … Artificial
+  const STARTS = { 1: 600, 4: 300, 7: 1500, 8: 1600, 9: 1900, 10: 2200, 11: 2400 };
+  S.forEach(b => b.segs.forEach(g => { if (g.dur) g.dur *= DUR; if (g.perch && isFinite(g.perch)) g.perch *= DUR; }));
+  const revealOffset = (b) => {
+    let acc = 0;
+    for (const g of b.segs) {
+      if (g.reveal !== undefined) return { word: g.reveal, off: acc + g.dur * (g.revealAt ?? .8) };
+      acc += g.perch !== undefined ? g.perch : g.dur;
+    }
+    return null;
+  };
+  S.forEach((b, i) => {
+    if (b.final) return;
+    const r = revealOffset(b);
+    b.t = r ? Math.max(0, WORD_TIMES[r.word] - r.off) : STARTS[i];
+  });
+  const lifetime = (b) => b.segs.reduce((n, g) => n + (g.perch !== undefined ? g.perch : g.dur), 0);
+  const lastExit = Math.max(...S.filter(b => !b.final).map(b => b.t + lifetime(b)));
+  const fin = S.find(b => b.final);
+  const finReveal = fin.segs[0].dur * fin.segs[0].revealAt;
+  fin.t = Math.max(WORD_TIMES[5], lastExit + 60) - finReveal;
+
+  /* ---------------- The birds themselves ---------------- */
+  const ease = {
+    linear: u => u,
+    in: u => 1 - Math.cos(u * Math.PI / 2),
+    out: u => Math.sin(u * Math.PI / 2),
+    inout: u => (1 - Math.cos(Math.PI * u)) / 2
+  };
+  const bez = (a, b, c, d, t) => { const m = 1 - t; return m * m * m * a + 3 * m * m * t * b + 3 * m * t * t * c + t * t * t * d; };
+
+  function prepare(b, i) {
+    b.k = b.px / 180;
+    b.i = i;
+    let p0 = b.from, prevC2 = null;
+    b.segs.forEach(sg => {
+      if (sg.perch !== undefined) { sg.p = p0; return; }
+      sg.p0 = p0;
+      sg.c1 = sg.c1 === "smooth" ? [p0[0] + (p0[0] - prevC2[0]), p0[1] + (p0[1] - prevC2[1])] : sg.c1;
+      prevC2 = sg.c2; p0 = sg.to;
+    });
+    let acc = 0;
+    b.segs.forEach(sg => { sg.start = acc; acc += sg.perch !== undefined ? sg.perch : sg.dur; });
+    b.end = acc;
+    b.st = { phi: Math.random() * TAU, s: .3, fold: 0, shrink: 1, legs: 0, tilt: 0, face: 1, faceT: 1,
+             pb: 0, head: 0, tail: 0, crouch: 0, px: null, py: null, bound: 0 };
+  }
+
+  function spawn(b) {
+    const el = document.createElement("div");
+    el.className = "solo";
+    el.style.width = b.px + "px";
+    el.style.transformOrigin = `${70 * b.k}px ${110 * b.k}px`;
+    if (b.op) el.style.opacity = b.op;
+    if (b.blur) el.style.filter = `blur(${b.blur}px)`;
+    el.innerHTML = `<svg viewBox="-70 -110 180 140">${FLYING}<g class="pgroup" opacity="0">${PERCHED}</g></svg>`;
+    (b.layer === "back" ? back : front).appendChild(el);
+    b.el = el;
+    b.q = {
+      f: el.querySelector(".fgroup"), p: el.querySelector(".pgroup"),
+      far: el.querySelector(".w-far"), near: el.querySelector(".w-near"), cov: el.querySelector(".w-cov"),
+      shafts: el.querySelector(".w-shafts"), legs: el.querySelector(".legs"),
+      head: el.querySelector(".pgroup .phead"), tail: el.querySelector(".pgroup .ptail")
+    };
+  }
+
+  function wingPath(pts, st, ox, oy, scale) {
+    const d = pts.map(([x, y], j) => {
+      let X = x * (1 - .38 * st.fold) + y * .32 * st.fold;
+      let Y = y * st.s * (1 - .2 * st.fold);
+      X *= st.shrink * scale; Y *= st.shrink * scale;
+      return (j ? "L" : "M") + (ox + X).toFixed(1) + " " + (oy + Y).toFixed(1);
+    });
+    return d.join(" ") + " Z";
+  }
+  function shaftPath(st) {
+    return SHAFTS.map(([a, c]) => {
+      const f = ([x, y]) => [(x * (1 - .38 * st.fold) + y * .32 * st.fold) * st.shrink + 34, y * st.s * (1 - .2 * st.fold) * st.shrink - 6];
+      const A = f(a), C = f(c);
+      return `M${A[0].toFixed(1)} ${A[1].toFixed(1)} L${C[0].toFixed(1)} ${C[1].toFixed(1)}`;
+    }).join(" ");
+  }
+
+  function update(b, t, dt) {
+    const st = b.st;
+    const local = t - b.t;
+    let sg = b.segs.find(g => local < g.start + (g.perch !== undefined ? g.perch : g.dur));
+    if (!sg) return false;
+    const idx = b.segs.indexOf(sg);
+    const prev = b.segs[idx - 1];
+    let x, y, u = 0, perched = false;
+
+    if (sg.perch !== undefined) {
+      perched = true;
+      if (prev && prev.revealOnLand !== undefined) words[prev.revealOnLand].classList.add("on");
+      [x, y] = sg.p;
+      const pt = local - sg.start;
+      st.pb = lerp(st.pb, 1, .35);
+      // Blackbirds cock the tail on landing, then look about.
+      st.tail = pt < 500 ? -24 * Math.sin(Math.PI * pt / 500) : lerp(st.tail, 0, .2);
+      const look = sg.preen ? Math.sin(pt / 180) * 14 : Math.sin(pt / 420) * 9 + (pt > 700 && pt < 900 ? -6 : 0);
+      st.head = lerp(st.head, look, .12);
+      const left = sg.perch - pt;
+      st.crouch = left < 220 && isFinite(sg.perch) ? (220 - left) / 220 * 3.5 : lerp(st.crouch, 0, .3);
+      if (left < 120) st.pb = lerp(st.pb, 0, .5);
+      st.s = lerp(st.s, 1, .3); st.fold = lerp(st.fold, 0, .3);
+      st.phi = 0;
+    } else {
+      u = clamp((local - sg.start) / sg.dur, 0, 1);
+      const e = ease[sg.ease || "linear"](u);
+      x = bez(sg.p0[0], sg.c1[0], sg.c2[0], sg.to[0], e);
+      y = bez(sg.p0[1], sg.c1[1], sg.c2[1], sg.to[1], e);
+      st.pb = lerp(st.pb, 0, .45);
+      st.crouch = lerp(st.crouch, 0, .3);
+      if (sg.reveal !== undefined && u >= (sg.revealAt ?? .8)) words[sg.reveal].classList.add("on");
+    }
+
+    // velocity and heading
+    const vx = st.px === null ? 0 : x - st.px, vy = st.py === null ? 0 : y - st.py;
+    const speed = Math.hypot(vx, vy) / Math.max(dt, .5);
+    st.px = x; st.py = y;
+
+    if (!perched) {
+      if (Math.abs(vx) > .15) st.faceT = vx < 0 ? -1 : 1;
+      const climb = Math.atan2(vy, Math.abs(vx) + 1e-6) * DEG;
+      const landing = sg.land && u > .62, takeoff = prev && prev.perch !== undefined && u < .35;
+      let tiltT = clamp(climb, -48, 48);
+      if (landing) tiltT = lerp(tiltT, -38, (u - .62) / .38);
+      st.tilt = lerp(st.tilt, tiltT, .12);
+      st.legs = lerp(st.legs, landing || takeoff ? 1 : 0, .15);
+
+      let mode = sg.wing || "auto";
+      if (landing) mode = "flare";
+      else if (takeoff) mode = "takeoff";
+      else if (mode === "auto") mode = climb > 13 ? "glide" : "flap";
+
+      const hz = sg.hz || 1;
+      let sT = st.s, foldT = 0, shrinkT = 1;
+      if (mode === "flap" || mode === "takeoff" || mode === "flare") {
+        const f = mode === "takeoff" ? 4.4 : mode === "flare" ? 2.3 : (2.9 + clamp(-climb / 30, 0, 1.2)) * hz;
+        st.phi = (st.phi + TAU * f * dt / 1000) % TAU;
+        sT = Math.cos(st.phi);
+        foldT = st.phi > Math.PI ? Math.sin(st.phi - Math.PI) * (mode === "flare" ? .25 : 1) : 0;
+        if (mode === "flare") sT = .35 + .65 * Math.cos(st.phi);
+      } else if (mode === "glide") {
+        sT = .34 + .05 * Math.sin(t / 300 + b.i); foldT = 0;
+        st.phi = 0;
+      } else if (mode === "bound") {
+        st.bound = (st.bound + dt) % 900;
+        if (st.bound < 480) {
+          st.phi = (st.phi + TAU * 4 * dt / 1000) % TAU;
+          sT = Math.cos(st.phi); foldT = st.phi > Math.PI ? Math.sin(st.phi - Math.PI) : 0;
+        } else { sT = .12; foldT = 1; shrinkT = .62; }
+        y += Math.sin(st.bound / 900 * TAU) * .012 * U;
+      }
+      const snap = mode === "glide" || shrinkT < 1 ? .2 : .6;
+      st.s = lerp(st.s, sT, snap); st.fold = lerp(st.fold, foldT, snap); st.shrink = lerp(st.shrink, shrinkT, .2);
+    } else {
+      // Turn to face the way it will leave, just before taking off.
+      const nxt = b.segs[idx + 1];
+      if (nxt && (local - sg.start) > sg.perch * .55) st.faceT = nxt.to[0] < x ? -1 : 1;
+      st.tilt = lerp(st.tilt, 0, .25);
+      st.legs = 1;
+    }
+    st.face = lerp(st.face, st.faceT, .22);
+    const face = Math.abs(st.face) < .06 ? (st.face < 0 ? -.06 : .06) : st.face;
+
+    // draw
+    const q = b.q, k = b.k;
+    q.far.setAttribute("d", wingPath(WING, st, 40, -9, .82));
+    q.near.setAttribute("d", wingPath(WING, st, 34, -6, 1));
+    q.cov.setAttribute("d", wingPath(COVERTS, st, 34, -6, 1));
+    q.shafts.setAttribute("d", shaftPath(st));
+    q.legs.setAttribute("opacity", st.legs.toFixed(2));
+    q.f.setAttribute("transform", `translate(-28 -45) rotate(${st.tilt.toFixed(1)} 28 0)`);
+    q.f.setAttribute("opacity", (1 - st.pb).toFixed(2));
+    q.p.setAttribute("opacity", st.pb.toFixed(2));
+    q.p.setAttribute("transform", `translate(0 ${st.crouch.toFixed(1)})`);
+    q.head.setAttribute("transform", `rotate(${st.head.toFixed(1)} 32 -74)`);
+    q.tail.setAttribute("transform", `rotate(${st.tail.toFixed(1)} -10 -32)`);
+    const fx = x, fy = y + 45 * k; // feet position
+    b.el.style.transform = `translate(${(fx - 70 * k).toFixed(1)}px, ${(fy - 110 * k).toFixed(1)}px) scale(${face.toFixed(3)},1)`;
+
+    if (b.final && sg.perch !== undefined && local - sg.start > 160) return "landed";
+    return true;
+  }
+
+  S.forEach(prepare);
+  let t0 = null, last = null, done = false, shown = -1, spawned = 0;
+
+  function showCount(i) {
+    if (i === shown) return;
+    shown = i;
+    count.style.opacity = 0;
+    setTimeout(() => { if (!done) { count.textContent = WAYS[i].n; count.style.opacity = 1; } }, 160);
+  }
+
+  function finish() {
+    if (done) return;
+    done = true;
+    words.forEach(w => w.classList.add("on"));
+    back.remove(); front.remove();
+    count.style.opacity = 0;
+    setTimeout(() => count.remove(), 400);
+    cover.classList.remove("intro");
+    cover.classList.add("arrived");
+    cover.removeEventListener("click", finish);
+    removeEventListener("keydown", finish);
+  }
+  cover.addEventListener("click", finish);
+  addEventListener("keydown", finish);
+
+  function frame(ts) {
+    if (done) return;
+    if (t0 === null) { t0 = ts; last = ts; }
+    const t = ts - t0, dt = Math.min(50, ts - last);
+    last = ts;
+    for (const b of S) {
+      if (b.gone || t < b.t) continue;
+      if (!b.el) { spawn(b); showCount(spawned++); }
+      const r = update(b, t, dt);
+      if (r === "landed") { finish(); return; }
+      if (!r) { b.gone = true; b.el.remove(); }
+    }
+    if (t > 20000) { finish(); return; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+const HOME_SECTIONS = ["about", "agenda", "poem", "catalog"];
+
+/* ---------- Search ---------- */
+const strip = (h) => { const d = document.createElement("div"); d.innerHTML = h; return d.textContent; };
+function buildIndex() {
+  const items = [];
+  const add = (o) => items.push({ ...o, hay: (o.title + " " + o.text + " " + o.kind + " " + (o.keys || "")).toLowerCase() });
+  // The site's main sections, so searching a section's name finds it directly.
+  add({ kind: "Section", section: true, title: "Agenda", href: "#/agenda", keys: "schedule timeline program times evening",
+        text: AGENDA.map(a => a.time + " " + a.what).join(" · ") });
+  add({ kind: "Section", section: true, title: "About the evening", href: "#/about", keys: "summary overview introduction welcome invitation",
+        text: "Thursday, October 15, 5:00–8:30 p.m. at 259 10th Avenue." });
+  add({ kind: "Section", section: true, title: "Course catalog", href: "#/catalog", keys: "courses classes sessions lenses menu list",
+        text: "All courses, grouped into thirteen lenses: " + WAYS.map(w => w.name).join(", ") + "." });
+  add({ kind: "Section", section: true, title: "Ema: Wishes Made Visible", href: "#/ema",
+        keys: "ema plaque plaques art project community wish wishes shinto shrine japan horse kami blackbird messenger reception social",
+        text: "A community art project during food, drinks, and conversation: write what you hope for your children, or for any child, as they grow up in a world with AI, on a blackbird ema and hang it with the others." });
+  add({ kind: "Section", section: true, title: "The poem", href: "#/poem", keys: "wallace stevens blackbird stanzas poetry",
+        text: "“Thirteen Ways of Looking at a Blackbird” by Wallace Stevens." });
+  add({ kind: "About the evening", title: "An evening of learning and conversation", href: "#/about",
+        text: "Thursday, October 15, 5:00–8:30 p.m., 259 10th Avenue. Avenues parents, AI Advisory Board, guiding principles, panel, thirteen lenses." });
+  AGENDA.forEach(a => add({ kind: "Agenda · " + a.time, title: a.what, href: "#/agenda", text: strip(a.detail || "") }));
+  add({ kind: "Poem", title: "Thirteen Ways of Looking at a Blackbird", href: "#/poem",
+        text: "Wallace Stevens " + WAYS.map(w => w.stanza).join(" ") });
+  WAYS.forEach((w, wi) => {
+    add({ kind: "Lens " + w.n, title: w.name, href: "#/" + w.n, c: w.c, text: w.stanza });
+    COURSES[w.n].forEach((c, ci) => {
+      const href = "#/" + w.n + "/" + (ci + 1);
+      add({ kind: "Course · " + w.name, title: strip(c.title), href, c: w.c,
+            text: [joinNames(c.people), c.room ? "Room " + c.room : "", ...c.desc.map(strip)].join(" ") });
+      c.people.forEach(p => add({ kind: (c.role.startsWith("Presenter") ? "Presenter" : "Faculty") + " · " + strip(c.title),
+            title: p.name, href, c: w.c, text: strip(p.bio || "") }));
+      c.readings.forEach(r => add({ kind: "Reading · " + strip(c.title), title: strip(r.title), href, c: w.c,
+            text: [r.author, r.note].join(" ") }));
+      if (c.room) add({ kind: "Room · " + strip(c.title), title: "Room: " + c.room, href, c: w.c, text: joinNames(c.people) });
+    });
+  });
+  return items;
+}
+let INDEX = null;
+const esc = (t) => t.replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+const italEma = (h) => h.replace(/(^|[^\w-])(ema)(?![\w-])/gi, "$1<i>$2</i>");
+function highlight(text, terms) {
+  let out = esc(text);
+  terms.forEach(t => { if (t) out = out.replace(new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"), "<mark>$1</mark>"); });
+  return out;
+}
+function snippet(text, terms) {
+  const low = text.toLowerCase(); let at = -1;
+  for (const t of terms) { at = low.indexOf(t); if (at >= 0) break; }
+  if (at < 0) return text.length > 140 ? text.slice(0, 140) + "…" : text;
+  const start = Math.max(0, at - 50);
+  return (start ? "…" : "") + text.slice(start, start + 150) + (start + 150 < text.length ? "…" : "");
+}
+function runSearch(q) {
+  INDEX = INDEX || buildIndex();
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!terms.length) return [];
+  return INDEX.map(it => {
+    if (!terms.every(t => it.hay.includes(t))) return null;
+    const tl = it.title.toLowerCase();
+    let score = 0;
+    terms.forEach(t => { if (tl.startsWith(t)) score += 6; else if (tl.includes(t)) score += 4; else score += 1; });
+    if (it.kind.startsWith("Faculty") || it.kind.startsWith("Presenter")) score += 1;
+    if (it.section && terms.some(t => tl.includes(t))) score += 10;
+    return { it, score };
+  }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 30).map(r => r.it);
+}
+(function setupSearch() {
+  const btn = document.querySelector(".search-btn"), box = document.querySelector(".search");
+  const input = box.querySelector("input"), list = box.querySelector(".search-results");
+  let active = -1;
+  const open = () => { box.hidden = false; input.value = ""; render(); setTimeout(() => input.focus(), 10); };
+  const close = () => { box.hidden = true; btn.focus(); };
+  function render() {
+    const q = input.value.trim(), res = runSearch(q);
+    const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    active = res.length ? 0 : -1;
+    if (!q) { list.innerHTML = `<p class="search-empty">Try a name, a topic like “reading” or “China,” or a room.</p>`; return; }
+    if (!res.length) { list.innerHTML = `<p class="search-empty">Nothing found for “${esc(q)}.”</p>`; return; }
+    list.innerHTML = res.map((r, i) => `
+      <a href="${r.href}" role="listitem" class="${i === 0 ? "active" : ""}" style="--c:${r.c || "#3E69B2"}">
+        <span class="swatch"></span>
+        <span><span class="kind">${esc(r.kind)}</span><span class="ttl">${italEma(highlight(r.title, terms))}</span>
+        ${r.text ? `<span class="snip">${italEma(highlight(snippet(r.text, terms), terms))}</span>` : ""}</span>
+      </a>`).join("");
+  }
+  function move(d) {
+    const links = [...list.querySelectorAll("a")]; if (!links.length) return;
+    links[active]?.classList.remove("active");
+    active = (active + d + links.length) % links.length;
+    links[active].classList.add("active"); links[active].scrollIntoView({ block: "nearest" });
+  }
+  btn.addEventListener("click", open);
+  input.addEventListener("input", render);
+  box.querySelector(".search-close").addEventListener("click", close);
+  box.addEventListener("click", e => { if (e.target === box) close(); });
+  list.addEventListener("click", e => { if (e.target.closest("a")) { box.hidden = true; if (e.target.closest("a").getAttribute("href") === location.hash) route(); } });
+  input.addEventListener("keydown", e => {
+    if (e.key === "ArrowDown") { e.preventDefault(); move(1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); move(-1); }
+    else if (e.key === "Enter") { const a = list.querySelectorAll("a")[active]; if (a) { box.hidden = true; if (a.getAttribute("href") === location.hash) route(); else location.hash = a.getAttribute("href"); } }
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !box.hidden) close();
+    else if (e.key === "/" && box.hidden && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); open(); }
+  });
+})();
+function route() {
+  const parts = decodeURIComponent(location.hash.replace(/^#\/?/, "")).split("/");
+  const n = parts[0], sub = parts[1];
+  app.removeAttribute("style");
+  if (idx(n) >= 0) renderWay(n); else if (n === "ema") renderEma(); else renderHome();
+  const section = HOME_SECTIONS.includes(n) ? document.getElementById(n)
+    : (idx(n) >= 0 && sub ? document.getElementById("course-" + sub) : null);
+  if (section) section.scrollIntoView(); else window.scrollTo(0, 0);
+  if (!introPlayed) {
+    introPlayed = true;
+    if (!n && !calmMotion()) playIntro();
+  }
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
