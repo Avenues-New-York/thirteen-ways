@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Thirteen Ways of Looking at AI · Avenues New York</title>
+<meta name="description" content="Thirteen Ways of Looking at AI: an evening of learning and conversation for Avenues New York parents, Thursday, October 15, 5:00–8:30 p.m.">
+<meta name="theme-color" content="#3E69B2">
+<meta property="og:title" content="Thirteen Ways of Looking at AI">
+<meta property="og:description" content="An evening of learning and conversation for Avenues New York parents. Thursday, October 15, 5:00–8:30 p.m.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233E69B2'/%3E%3Cpath d='M10 50 L28 40 C30 30 38 24 46 24 C50 18 56 18 58 24 L62 27 L57 29 C55 36 48 42 38 44 L18 52 Z' fill='%23000'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Merriweather:wght@900&family=Caveat:wght@500&family=Long+Cang&display=swap" rel="stylesheet">
@@ -38,6 +43,7 @@
   }
   a { color: inherit; }
   :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  main { overflow-x: clip; }
   .wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 28px; }
   .numeral { font-family: var(--serif); font-weight: 900; color: #000; line-height: 1; letter-spacing: -0.01em; }
 
@@ -105,6 +111,32 @@
   .subject { margin: 0.35em 0 0; font-weight: 300; font-size: clamp(56px, 11vw, 132px); line-height: 1.02; letter-spacing: -0.02em; }
   .date { margin: 0.9em 0 0; font-weight: 800; font-size: clamp(22px, 3vw, 34px); color: #1d1d1b; }
 
+  .agenda li.has-board { grid-template-columns: 210px 1fr; }
+  .board { grid-column: 1 / -1; margin-top: 26px; }
+  .board-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; margin-bottom: 16px; }
+  .board-head h3 { margin: 0; font-weight: 800; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.03em; line-height: 1.05; }
+  .board-head p { margin: 0; font-size: 15px; color: var(--muted); max-width: 46ch; }
+  .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; align-items: stretch; }
+  .lens-card { background: var(--c); color: var(--t); }
+  .lens-card a { color: inherit; text-decoration: none; }
+  .lens-card-head { display: flex; align-items: baseline; gap: 12px; padding: 14px 16px 10px; }
+  .lens-card-head .numeral { font-size: 22px; color: #000; min-width: 2.2em; }
+  .lens-card-head .lens-name { font-size: 18px; font-weight: 600; line-height: 1.2; }
+  .lens-card-head:hover .lens-name { text-decoration: underline; text-underline-offset: 3px; }
+  .course-tile { display: flex; gap: 14px; align-items: flex-start; justify-content: space-between; padding: 12px 16px 14px; border-top: 1px solid color-mix(in srgb, var(--t) 35%, transparent); transition: background .15s ease; }
+  .course-tile:hover, .course-tile:focus-visible { background: color-mix(in srgb, #000 12%, transparent); }
+  .tile-text { min-width: 0; }
+  .tile-title { display: block; font-weight: 800; font-size: 16px; line-height: 1.25; letter-spacing: -0.01em; }
+  .tile-people { display: block; font-size: 14px; font-weight: 400; margin-top: 4px; opacity: .92; }
+  .tile-room { flex: none; text-align: right; font-weight: 800; font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; white-space: nowrap; }
+  .tile-room.is-long { font-size: 15px; white-space: normal; max-width: 6.5em; letter-spacing: -0.01em; }
+  .tile-room .room-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: .02em; margin-bottom: 3px; opacity: .85; }
+  .tile-none { margin: 0; padding: 10px 16px 14px; font-size: 14px; border-top: 1px solid color-mix(in srgb, var(--t) 35%, transparent); opacity: .9; }
+  .lens-card.is-empty { opacity: .75; }
+  @media (max-width: 760px) {
+    .board-grid { grid-template-columns: 1fr; }
+    .tile-room { font-size: 19px; }
+  }
   .catalog { padding: 72px 0 80px; }
   .catalog h2, .poem h2 { font-weight: 600; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; margin: 0 0 28px; }
   .ways { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
@@ -168,21 +200,31 @@
   .home-section .when { margin: 0 0 36px; }
   .home-section .when span { color: var(--muted); }
   .agenda-section { border-top: 1px solid var(--line); padding-bottom: 72px; }
-  .ema-hero-body { padding: 4vh 0 36px; }
+  .ema-hero-body { padding: 4vh 0 30px; max-width: 760px; }
+  .ema-intro { margin: 18px 0 0; font-size: clamp(22px, 2.6vw, 28px); line-height: 1.35; font-weight: 400; color: #fff; max-width: 34ch; }
+  .ema-prompt-hero { margin: 28px 0 44px; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  .ema-examples-label { margin: 40px 0 0; font-size: 15px; font-weight: 600; color: #1d1d1b; }
+  .ema-h.ema-h-first { margin-top: 0; }
+  .ema-steps { list-style: none; margin: 22px 0 44px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .ema-steps li { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.14); color: #fff; padding: 14px 16px; font-size: 16px; line-height: 1.35; }
+  .ema-steps b { font-weight: 800; }
+  .step-n { flex: none; font-family: var(--serif); font-weight: 900; font-size: 22px; line-height: 1; color: #000; }
+  @media (max-width: 760px) { .ema-steps { grid-template-columns: 1fr; gap: 6px; } }
   .ema-hero h1 { margin: 0; font-weight: 800; font-size: clamp(42px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.03em; }
   .ema-hero-sub { margin: 18px 0 0; font-size: 20px; font-weight: 300; color: #fff; max-width: 40ch; line-height: 1.45; }
-  .ema-rack { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3%; padding-top: 6px; margin-bottom: 64px; }
+  .ema-rack { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3%; padding-top: 4px; margin-bottom: 64px; align-items: start; }
   .ema-rack::before { content: ""; position: absolute; left: -2%; right: -2%; top: 0; height: 6px; background: #000; border-radius: 3px; z-index: 2; }
-  .ema-hang { margin: 0; transform-origin: 50% 0; }
+  .ema-hang { margin: 0; position: relative; transform-origin: 63.8% 0; }
   .ema-hang.h1 { transform: rotate(-2.5deg); }
-  .ema-hang.h2 { margin-top: 5%; transform: rotate(1.5deg); }
-  .ema-hang.h3 { margin-top: 1%; transform: rotate(3deg); }
+  .ema-hang.h2 { transform: rotate(1.5deg); }
+  .ema-hang.h3 { transform: rotate(3deg); }
   .ema-bird { display: block; width: 100%; overflow: visible; filter: drop-shadow(0 10px 14px rgba(0,0,0,.28)); }
-  .ema-hang .ema-bird { transform-origin: 51% 0; }
+  .ema-hang .ema-bird { transform-origin: 63.8% 0; }
   .ema-hang figcaption { text-align: center; font-size: 14px; font-weight: 600; color: #1d1d1b; margin-top: 4px; }
   .pen text { fill: #f4f4f0; }
   .pen-en text, .pen-es text { font-family: "Caveat", cursive; font-weight: 500; }
   .pen-zh-Hans text { font-family: "Long Cang", "Kaiti SC", "STKaiti", cursive; }
+  .ema-dots { display: none; }
   .ema-rack-note { margin: 22px 0 0; padding-bottom: 56px; font-size: 16px; color: #fff; max-width: 60ch; }
   @media (prefers-reduced-motion: no-preference) {
     .ema-hang .ema-bird { animation: sway 6s ease-in-out infinite alternate; }
@@ -196,9 +238,6 @@
   .ema-prompt .ema-prompt-label { margin: 0 0 8px; font-size: 15px; font-weight: 600; color: #b9c6de; }
   .ema-prompt .ema-prompt-text { margin: 0; font-size: clamp(21px, 2.4vw, 26px); line-height: 1.4; font-weight: 400; }
   @media (max-width: 760px) {
-    .ema-rack { grid-template-columns: 1fr; gap: 26px; padding: 0; }
-    .ema-rack::before { display: none; }
-    .ema-hang, .ema-hang.h2, .ema-hang.h3 { margin-top: 0; }
   }
   .agenda-section .agenda { padding-top: 0; border-top: 2px solid var(--blue); }
   #about .prose, #about { padding-bottom: 56px; }
@@ -227,6 +266,14 @@
   .epigraph cite { display: block; margin-top: 12px; font-style: normal; font-size: 13px; font-weight: 600; opacity: .85; }
 
   .course { padding: 64px 0 20px; }
+  .lens-readings { padding-top: 0; border-top: 0 !important; }
+  .lens-readings .extras { margin-top: 0; grid-template-columns: minmax(0, 1fr); max-width: 680px; }
+  .guiding { max-width: 68ch; margin: 30px 0 6px; }
+  .guiding h3 { margin: 0 0 12px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .guiding ul { list-style: none; margin: 0; padding: 0; border-left: 4px solid var(--c); }
+  .guiding li { padding: 8px 0 8px 20px; font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: -0.005em; }
+  .not-running-title { font-weight: 800; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 8px; max-width: 30ch; color: var(--muted); }
+  .not-running { margin: 0 0 40px; font-size: 16px; font-style: italic; color: var(--muted); }
   .lens-empty { max-width: 60ch; font-size: 19px; font-weight: 300; line-height: 1.55; margin: 0 0 40px; }
   .lens-empty a { color: inherit; text-decoration-color: var(--c); text-decoration-thickness: 2px; text-underline-offset: 3px; }
   .course + .course { border-top: 1px solid var(--line); }
@@ -242,6 +289,7 @@
   .desc blockquote span { font-style: normal; }
 
   .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin: 40px 0 44px; }
+  .extras.extras-single { grid-template-columns: minmax(0, 1fr); max-width: 680px; }
   .extras h3 { font-size: 15px; font-weight: 800; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--c); }
   .bio { display: flex; gap: 16px; margin-bottom: 20px; }
   .avatar { flex: none; width: 58px; height: 58px; border-radius: 50%; background: var(--slot); border: 1px dashed var(--muted); display: grid; place-items: center; }
@@ -268,6 +316,45 @@
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.prev { color: #8fb0ea; box-shadow: inset 0 0 0 2px #8fb0ea; } }
   .next-way { margin-left: auto; text-align: right; }
   .next-way small { display: block; color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+
+  /* ---------- Phone refinements ---------- */
+  .hero-top nav .short, .k-touch { display: none; }
+  @media (max-width: 1024px) {
+    .hero-top { flex-wrap: wrap; row-gap: 10px; padding: 22px 56px 0 0; }
+    .hero-top > a { font-size: 17px; white-space: nowrap; }
+    .hero-top nav { width: 100%; gap: 20px; flex-wrap: nowrap; }
+    .hero-top nav a { font-size: 15px; white-space: nowrap; }
+    .hero-top nav .long { display: none; }
+    .hero-top nav .short { display: inline; }
+  }
+  @media (hover: none) { .k-desk { display: none; } .k-touch { display: inline; } }
+  @media (max-width: 760px) {
+    .title { font-size: 9.6vw; }
+    .title .bird { width: 1.15em; right: -0.5em; top: -0.8em; }
+    .subject { font-size: 15vw; }
+    .agenda li.has-board { grid-template-columns: 1fr; }
+    .agenda li .what { font-size: 20px; }
+    .pager { flex-wrap: nowrap; }
+    .pager .btn { flex: 1; min-width: 0; padding: 11px 8px; font-size: 16px; }
+    .next-way { flex: 1; flex-basis: auto; }
+    .next-way .btn { width: 100%; }
+    .next-way small { font-size: 12px; }
+    /* Phones: the rack becomes a swipeable row, one bird at a time, all on one long bar */
+    .ema-rack { display: flex; gap: 0; margin: 0 -20px; padding: 0; overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; margin-bottom: 14px; }
+    .ema-rack::-webkit-scrollbar { display: none; }
+    .ema-rack::before { display: none; }
+    .ema-hang, .ema-hang.h1, .ema-hang.h2, .ema-hang.h3 { flex: 0 0 84%; padding: 5px 4% 18px; scroll-snap-align: center; transform: none; }
+    .ema-hang:first-child { margin-left: 8%; }
+    .ema-hang:last-child { margin-right: 8%; }
+    .ema-hang::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: #000; z-index: 2; }
+    .ema-hang:first-child::before { left: 4%; border-radius: 3px 0 0 3px; }
+    .ema-hang:last-child::before { right: 4%; border-radius: 0 3px 3px 0; }
+    .ema-dots { display: flex; justify-content: center; gap: 10px; padding-bottom: 48px; }
+    .ema-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,.28); transition: background .2s ease, transform .2s ease; }
+    .ema-dots span.on { background: #000; transform: scale(1.25); }
+  }
 
   /* ---------- Search ---------- */
   .search-btn { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); z-index: 40;
@@ -331,8 +418,8 @@
   <div class="search-panel">
     <div class="search-field">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 L21 21"/></svg>
-      <input type="search" placeholder="Search courses, faculty, readings, rooms…" aria-label="Search" autocomplete="off">
-      <button class="search-close" type="button" aria-label="Close search">Esc</button>
+      <input type="search" placeholder="Search courses, people, rooms…" aria-label="Search" autocomplete="off">
+      <button class="search-close" type="button" aria-label="Close search"><span class="k-desk">Esc</span><span class="k-touch">Close</span></button>
     </div>
     <div class="search-results" role="list"></div>
   </div>
@@ -407,11 +494,32 @@ const BIOS = {
   "Lia Muschellak": "Lia joined Avenues New York from the São Paulo campus in 2019, where she remains the director of technology. She is deeply passionate about education and strongly committed to improving learning opportunities through innovative strategies. She began her career as a high school science teacher in independent schools in Brazil, where she used digital tools to expand and improve learning opportunities."
 };
 
+/* Readings and resources for a lens as a whole (used when no course runs through it). */
+const LENS_READINGS = {
+  "VI": [
+    { title: "Moral Machine",
+      author: "Interactive website, MIT Media Lab",
+      url: "https://www.moralmachine.net/",
+      note: "Decide what a self-driving car should do when every choice causes harm, then see how your answers compare with millions of people around the world." },
+    { title: "Recommendation on the Ethics of Artificial Intelligence",
+      author: "UNESCO (2021)",
+      url: "https://drive.google.com/file/d/1JxsGd1Bgr3JswYIV8F2SZbOnbNd3swNu/view?usp=sharing",
+      note: "The first global standard on AI ethics, adopted by UNESCO’s member states, setting out values such as human rights, fairness, transparency, and human oversight." },
+    { title: "Beware the Power of Prediction",
+      author: "Carissa Véliz, TED talk (TED2026, about 12 minutes)",
+      url: "https://www.ted.com/talks/carissa_veliz_beware_the_power_of_prediction",
+      note: "A philosopher argues that predictions are rarely neutral: from Roman emperors to today’s AI systems, they are often bids for power that shape the very futures they claim to foresee." }
+  ]
+};
+/* Courses listed under a lens but not running this time. */
+const NOT_RUNNING = { "VI": "How Does AI Intersect with Ethical Dilemmas?" };
+
 const person = (name) => ({ name, bio: BIOS[name] || "", photo: "" });
 
 const COURSES = {
   "I": [
     { title: "AI Behind the Scenes: Supporting Children’s Creativity Through Art",
+      questions: ["How might AI expand the ways we perceive, explore, and extend the artistic process without replacing the act of thinking and creating?", "What possibilities emerge when we consider AI alongside children’s ideas, choices, and creative agency?"],
       room: "701",
       role: "Faculty", people: [person("Scarlett Cheng"), person("Grace Hu")],
       desc: [
@@ -441,6 +549,7 @@ const COURSES = {
         "In this session, we will explore a common theme that has emerged from conversations and workshops I've held with educators from private, public, and charter schools in over 10 states: specifically and explicitly fostering students' academic self-confidence—a well-founded belief that they can do hard things without being rescued—is the critical skill in the AI era. We'll examine that claim in an educational context briefly, then spend the majority of our time on what this moment asks of us as parents, working through real situations from home and school. The question underneath all of them is the same: will our children grow up steering, or getting steered?"
       ], readings: [] },
     { title: "Cultivating a Love of Reading in an Increasingly Digital World",
+      questions: ["What happens when children have the freedom to choose what they read, and how can that choice nurture their confidence, interests, and love of reading?", "What if, alongside asking, “What makes this a good book?”, we also asked, “What makes this a good book for this reader?” How can we honour each child’s unique reading journey and help them discover the confidence, joy, and sense of belonging that come with seeing themselves as a reader?"],
       room: "702",
       role: "Faculty", people: [person("Marytere Garza"), person("Charlene Sung"), person("Sara Hayes")],
       desc: [
@@ -453,6 +562,28 @@ const COURSES = {
       ] }
   ],
   "III": [
+    { title: "Attention Sanctuaries",
+      questions: ["What attention sanctuaries exist in our community?", "How might we be more aware of these spaces for ourselves and our students?"],
+      room: "704",
+      role: "Faculty", people: [person("Jonathan Scolnick")],
+      desc: [
+        "Some would argue that our attention is being fracked by the biggest companies or the smartest people in tech. This is the new economy. Talking heads debate the extent of the destruction: whether AI will supercharge the depletion of our attention spans, alter our common humanity, or even obliterate the human race.",
+        "I am no authority on any of this, and this workshop will offer neither another platform for debate nor despair. Instead, it is for those of us deciding what we can do, in community, to retain—and retrain—our attention.",
+        "Attensity! A Manifesto of the Attention Liberation Movement describes attention sanctuaries as protected spaces that shield human focus from digital exploitation and restore our collective attentional agency. Let's gather to identify the attention sanctuaries already thriving in our communities and explore how we might build and strengthen them—for our students and ourselves."
+      ], readings: [
+        { title: "Will the Humanities Survive Artificial Intelligence?",
+          author: "D. Graham Burnett, The New Yorker (April 26, 2025)",
+          url: "https://www.newyorker.com/culture/the-weekend-essay/will-the-humanities-survive-artificial-intelligence",
+          note: "A Princeton historian reports from his own classroom on what AI means for the humanities, and argues their real work is asking the questions machines can’t." },
+        { title: "Attention Sanctuaries: Social Practice Guidelines and Emergent Strategies in Attention Activism",
+          author: "D. Graham Burnett and Eve Mitchell, Annals of the New York Academy of Sciences (2025)",
+          url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11998473/",
+          note: "The paper behind this session’s title: how communities can create shared spaces, and shared norms around devices, that protect human focus." },
+        { title: "The Strother School of Radical Attention",
+          author: "Kaitlyn Tiffany, The Atlantic (December 2024)",
+          url: "https://www.theatlantic.com/technology/archive/2024/12/strother-school-radical-attention/680830/",
+          note: "A visit to the Brooklyn school where people practice reclaiming their attention from screens, together." }
+      ] },
     { title: "Beyond the AI Arms Race: What the US and China Can Learn from Each Other",
       room: "705",
       role: "Faculty", people: [{ name: "Jesse Field", photo: "",
@@ -490,27 +621,7 @@ const COURSES = {
       ], readings: [] }
   ],
   "VI": [
-    { title: "Attention Sanctuaries",
-      room: "704",
-      role: "Faculty", people: [person("Jonathan Scolnick")],
-      desc: [
-        "Some would argue that our attention is being fracked by the biggest companies or the smartest people in tech. This is the new economy. Talking heads debate the extent of the destruction: whether AI will supercharge the depletion of our attention spans, alter our common humanity, or even obliterate the human race.",
-        "I am no authority on any of this, and this workshop will offer neither another platform for debate nor despair. Instead, it is for those of us deciding what we can do, in community, to retain—and retrain—our attention.",
-        "Attensity! A Manifesto of the Attention Liberation Movement describes attention sanctuaries as protected spaces that shield human focus from digital exploitation and restore our collective attentional agency. Let's gather to identify the attention sanctuaries already thriving in our communities and explore how we might build and strengthen them—for our students and ourselves."
-      ], readings: [
-        { title: "Will the Humanities Survive Artificial Intelligence?",
-          author: "D. Graham Burnett, The New Yorker (April 26, 2025)",
-          url: "https://www.newyorker.com/culture/the-weekend-essay/will-the-humanities-survive-artificial-intelligence",
-          note: "A Princeton historian reports from his own classroom on what AI means for the humanities, and argues their real work is asking the questions machines can’t." },
-        { title: "Attention Sanctuaries: Social Practice Guidelines and Emergent Strategies in Attention Activism",
-          author: "D. Graham Burnett and Eve Mitchell, Annals of the New York Academy of Sciences (2025)",
-          url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11998473/",
-          note: "The paper behind this session’s title: how communities can create shared spaces, and shared norms around devices, that protect human focus." },
-        { title: "The Strother School of Radical Attention",
-          author: "Kaitlyn Tiffany, The Atlantic (December 2024)",
-          url: "https://www.theatlantic.com/technology/archive/2024/12/strother-school-radical-attention/680830/",
-          note: "A visit to the Brooklyn school where people practice reclaiming their attention from screens, together." }
-      ] }
+
   ],
   "VII": [
     { title: "AI &amp; The Student Journey To, Through, and After College",
@@ -530,12 +641,13 @@ const COURSES = {
   ],
   "VIII": [
     { title: "What the History of Education Technology Tells Us About Today: The Dangers of Using Commercial AI Products in Education",
+      questions: ["Who decides what technology should be created and introduced to schools?", "Who is creating education technology, and for whom?", "What purpose(s) does technology currently serve in education?", "What purpose(s) should technology serve in education?"],
       room: "703",
       role: "Faculty", people: [person("JD Pirtle")],
       desc: [
         "The sudden, deliberate imposition of generative AI products, such as ChatGPT and Claude, on K-12 schools, colleges, and universities, is not a new phenomenon. The push by technology companies to intertwine their interests with schooling is part of a long history of private enterprise attempting to co-opt or capture schooling in the United States, to serve the material and ideological interests of those enterprises.",
         "In this course, I will briefly detail the history of education technology in the United States in order to help us understand what is now at stake, and what parents, caregivers, and educators can do about it. We will discuss the dangers to teaching and learning posed by the introduction of AI chatbots and companion apps to children and adolescents, and examine what alternative technology movements and new technological imaginaries can offer to foster progressive education and social democracy in schools.",
-        "Along the way we will ask and attempt to collectively answer crucial questions about education technology, such as “Who decides what technology should be created and introduced to schools?”; “Who is creating education technology and for whom?”; “What purpose(s) does technology currently serve in education?”; “What purpose(s) should technology serve in education?”"
+        "Along the way, we will ask, and attempt to answer together, some crucial questions about education technology."
       ], readings: [
         { title: "On Redesigning EdTech Systems",
           author: "Micah Blachman (July 22, 2026)",
@@ -553,6 +665,7 @@ const COURSES = {
   ],
   "IX": [
     { title: "Life, AI and Consciousness. Three Golden Threads?",
+      questions: ["How blurry is the line between life and non-life?", "How does the issue of free will apply to humans and to AI?", "Does how we treat AI depend on whether or not it is conscious?"],
       room: "710",
       role: "Faculty", people: [person("Warren Tappe")],
       desc: [
@@ -575,6 +688,7 @@ const COURSES = {
   ],
   "X": [
     { title: "Man v. Machine: Writing in the Age of AI",
+      questions: ["What does writing add to our “felt experience” of the world?", "What are we trying to do when we write, and what might be impossible for AI to approximate?"],
       room: "712",
       role: "Faculty", people: [person("Todd Shy"), person("Emma Heath"), person("Kathleen Radigan")],
       epigraph: "“Attention without feeling, I began to learn, is only a report. An openness — an empathy — was necessary if the attention was to matter.” <span>—Mary Oliver, <em>Our World</em></span>",
@@ -591,6 +705,7 @@ const COURSES = {
   ],
   "XI": [
     { title: "AI and Health: Better Care, Without Losing Connection",
+      questions: ["How can AI help us better understand and support people with complex developmental and health needs, and where might it fall short of the human judgment, trust, and connection that care requires?"],
       room: "713",
       role: "Faculty", people: [person("Nadine Bou Rached")],
       desc: [
@@ -605,6 +720,7 @@ const COURSES = {
   ],
   "XII": [
     { title: "Vibe Coding: Understanding and Building with AI",
+      questions: ["How can I leverage AI to build websites and applications that directly impact my lived experience?"],
       room: "714",
       role: "Faculty", people: [person("Chadd Clairmont"), person("Sam Basuk")],
       desc: [
@@ -626,6 +742,7 @@ const COURSES = {
   ],
   "XIII": [
     { title: "The AI Revolution: Have We Been Here Before?",
+      questions: ["Looking back at past technological revolutions, the futures people feared and the futures they hoped for were both usually wrong. What makes us think we are better at predicting this one?", "What would it take for parents, schools, and communities to have a real hand in shaping how AI enters our children’s lives, rather than just reacting to it?"],
       room: "716",
       role: "Faculty", people: [person("Lia Muschellak")],
       desc: [
@@ -739,25 +856,43 @@ function renderWay(n) {
         ${c.epigraph ? `<blockquote>${c.epigraph}</blockquote>` : ""}
         ${c.desc.map(p => `<p>${p}</p>`).join("")}
       </div>
-      <div class="extras">
+      ${c.questions ? `
+      <div class="guiding">
+        <h3>Guiding Questions</h3>
+        <ul>${c.questions.map(q => `<li>${q}</li>`).join("")}</ul>
+      </div>` : ""}
+      <div class="extras${c.readings.length ? "" : " extras-single"}">
         <section>
           <h3>About the ${c.people.length > 1 ? "faculty" : (c.role.startsWith("Presenter") ? "presenter" : "instructor")}</h3>
           ${c.people.map(renderBio).join("")}
         </section>
-        <section>
+        ${c.readings.length ? `<section>
           <h3>Course Readings/Resources</h3>
           ${c.readingsNote ? `<p class="readings-note">${c.readingsNote}</p>` : ""}
           ${renderReadings(c.readings, joinNames(c.people))}
-        </section>
+        </section>` : ""}
       </div>
     </div>
   </article>`).join("")}
   ${COURSES[n].length ? "" : `
   <article class="course">
     <div class="wrap">
-      <p class="lens-empty">No course is offered through this lens this time, but it remains one of the thirteen ways of looking. Browse the <a href="#/catalog">course catalog</a> for this evening’s sessions.</p>
+      ${NOT_RUNNING[n] ? `<h2 class="not-running-title">${NOT_RUNNING[n]}</h2>
+      <p class="not-running">This course is not running at this time.</p>` :
+      `<p class="lens-empty">No course is offered through this lens this time, but it remains one of the thirteen ways of looking. Browse the <a href="#/catalog">course catalog</a> for this evening’s sessions.</p>`}
     </div>
   </article>`}
+  ${(LENS_READINGS[n] || []).length ? `
+  <article class="course lens-readings" id="lens-readings">
+    <div class="wrap">
+      <div class="extras">
+        <section>
+          <h3>Course Readings/Resources</h3>
+          ${renderReadings(LENS_READINGS[n], "")}
+        </section>
+      </div>
+    </div>
+  </article>` : ""}
 
   <nav class="wrap pager" aria-label="Catalog navigation">
     <a class="btn" href="#/catalog">MENU</a>
@@ -778,10 +913,10 @@ const topNav = () => `
   <div class="hero-top">
     <a href="#/">Thirteen Ways of Looking at AI</a>
     <nav aria-label="Evening">
-      <a href="#/about">About the evening</a>
+      <a href="#/about">About<span class="long"> the evening</span></a>
       <a href="#/agenda">Agenda</a>
       <a href="#/ema"><i>Ema</i></a>
-      <a href="#/catalog">Course catalog</a>
+      <a href="#/catalog"><span class="long">Course catalog</span><span class="short">Courses</span></a>
     </nav>
   </div>`;
 
@@ -811,9 +946,9 @@ const BIRD_PLAQUE = "M 402.4 21.8 C 386.4 25.2 375.9 27.7 367.5 31.1 C 354.9 54.
 const BODY_MID = [[60, 297], [80, 285], [100, 268], [120, 249], [140, 226], [160, 202], [180, 174]];
 const midAt = (y) => { for (let i = 1; i < BODY_MID.length; i++) { const [y0, x0] = BODY_MID[i - 1], [y1, x1] = BODY_MID[i];
   if (y <= y1) return x0 + (x1 - x0) * (Math.max(y, y0) - y0) / (y1 - y0); } return BODY_MID[BODY_MID.length - 1][1]; };
-const plaque = (cls, lines, lang, size, lead) => `
-  <svg class="${cls}" viewBox="0 -50 420 330" role="img" aria-label="A blackbird ema painted black, with a wish written in white pen">
-    <path d="M268 64 L268 -50" stroke="#000" stroke-width="2.5"/>
+const plaque = (cls, lines, lang, size, lead, cord = 50) => `
+  <svg class="${cls}" viewBox="0 -${cord} 420 ${280 + cord}" role="img" aria-label="A blackbird ema painted black, with a wish written in white pen">
+    <path d="M268 64 L268 -${cord + 4}" stroke="#000" stroke-width="2.5"/>
     <path d="${BIRD_PLAQUE}" fill="#0a0a0c" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
     <circle cx="268" cy="64" r="6" fill="var(--blue)" stroke="#2a2a30" stroke-width="2"/>
     <circle cx="349" cy="20" r="4.5" fill="none" stroke="#f4f4f0" stroke-width="1.8"/>
@@ -833,32 +968,34 @@ function renderEma() {
       ${topNav()}
       <div class="ema-hero-body">
         <h1><i>Ema</i>: Wishes Made Visible</h1>
+        <p class="ema-intro"><i>Ema</i> are wishing plaques from Japanese shrines. Tonight, ours are blackbirds.</p>
         <p class="ema-hero-sub">A community art project during food, drinks, and conversation, 7:45–8:30 p.m. in Food.</p>
+        <div class="ema-prompt ema-prompt-hero">
+          <p class="ema-prompt-label">Tonight’s prompt</p>
+          <p class="ema-prompt-text">Write what you hope for your children, or for any child, as they grow up in a world with AI.</p>
+        </div>
       </div>
       <div class="ema-rack">
         <figure class="ema-hang h1">
-          ${plaque("ema-bird", ["I hope you", "trust your own", "voice, especially", "when a machine sounds", "surer than you feel."], "en", 18, [94, 21])}
+          ${plaque("ema-bird", ["I hope you", "trust your own", "voice, especially", "when a machine sounds", "surer than you feel."], "en", 18, [94, 21], 50)}
         </figure>
         <figure class="ema-hang h2">
-          ${plaque("ema-bird", ["Espero que", "confíes en tu", "propia voz, sobre", "todo cuando una", "máquina suene más", "segura de lo que tú", "te sientes."], "es", 15, [88, 17])}
+          ${plaque("ema-bird", ["Espero que", "confíes en tu", "propia voz, sobre", "todo cuando una", "máquina suene más", "segura de lo que tú", "te sientes."], "es", 15, [88, 17], 80)}
         </figure>
         <figure class="ema-hang h3">
-          ${plaque("ema-bird", ["愿你相信", "自己的声音，", "尤其是当机器", "听起来比你", "更笃定的时候。"], "zh-Hans", 17, [94, 21])}
+          ${plaque("ema-bird", ["愿你相信", "自己的声音，", "尤其是当机器", "听起来比你", "更笃定的时候。"], "zh-Hans", 17, [94, 21], 60)}
         </figure>
       </div>
+      <div class="ema-dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
     </div>
   </section>
 
   <section class="prose ema-prose">
     <div class="wrap"><div>
+      <h2 class="ema-h ema-h-first">About <i>ema</i></h2>
       <p>At Shinto shrines across Japan, visitors write their hopes on small wooden plaques called <i>ema</i> (<span lang="ja">絵馬</span>, literally “picture horse”) and hang them on racks near the shrine, where they rustle together like a chorus of private prayers made public.</p>
         <p>The name holds the history. In ancient Japan, people who could afford it offered real horses to the shrines, since horses were believed to carry messages to the <i>kami</i>, the spirits who dwell in the natural world. Over the centuries the living horse became a sculpted one, then a painted one, and finally a simple wooden tablet that anyone could offer. The messenger shrank, but the act stayed the same: put your wish into a form that can travel to something larger than yourself.</p>
         <p>In Japan, today’s <i>ema</i> carry wishes from locals and tourists alike. You might find wishes for passing an exam, healing an illness, or peace and abundance on earth. They’re often left facing outward, so passersby can read one another’s hopes.</p>
-      <h2 class="ema-h">Your blackbird</h2>
-      <div class="ema-prompt">
-        <p class="ema-prompt-label">Tonight’s prompt</p>
-        <p class="ema-prompt-text">Write what you hope for your children, or for any child, as they grow up in a world with AI.</p>
-      </div>
     </div></div>
   </section>
 
@@ -866,7 +1003,41 @@ function renderEma() {
     <a class="btn" href="#/agenda">AGENDA</a>
     <a class="btn prev" href="#/catalog">MENU</a>
   </nav>
-  ${FOOTER}`;
+  ${FOOTER}`;  const rack = app.querySelector(".ema-rack"), dots = [...app.querySelectorAll(".ema-dots span")];
+  rack.addEventListener("scroll", () => {
+    const birds = [...rack.children], mid = rack.scrollLeft + rack.clientWidth / 2;
+    let best = 0, d = Infinity;
+    birds.forEach((b, k) => { const c = b.offsetLeft + b.offsetWidth / 2; if (Math.abs(c - mid) < d) { d = Math.abs(c - mid); best = k; } });
+    dots.forEach((dot, k) => dot.classList.toggle("on", k === best));
+  }, { passive: true });
+}
+
+/* ---------- Find your course: every course by lens, with its room ---------- */
+function courseBoard() {
+  return `
+  <div class="board" id="catalog" aria-labelledby="board-title">
+    <div class="board-head">
+      <h3 id="board-title">Find your course</h3>
+      <p>Tap a course for the full description, facilitator bios, and more.</p>
+    </div>
+    <div class="board-grid">
+      ${WAYS.map(w => `
+      <section class="lens-card${COURSES[w.n].length ? "" : " is-empty"}" style="--c:${w.c};--t:${w.e}">
+        <a class="lens-card-head" href="#/${w.n}">
+          <span class="numeral">${w.n}</span>
+          <span class="lens-name">${w.name}</span>
+        </a>
+        ${COURSES[w.n].length ? COURSES[w.n].map((c, ci) => `
+        <a class="course-tile" href="#/${w.n}/${ci + 1}">
+          <span class="tile-text">
+            <span class="tile-title">${c.title.replace(/<small>.*?<\/small>/, "")}</span>
+            <span class="tile-people">${joinNames(c.people)}</span>
+          </span>
+          ${c.room ? `<span class="tile-room${c.room.length > 5 ? " is-long" : ""}"><span class="room-label">Room</span>${c.room}</span>` : ""}
+        </a>`).join("") : (NOT_RUNNING[w.n] ? `<a class="course-tile" href="#/${w.n}"><span class="tile-text"><span class="tile-title">${NOT_RUNNING[w.n]}</span><span class="tile-people">Not running at this time</span></span></a>` : `<p class="tile-none">No course this time</p>`)}
+      </section>`).join("")}
+    </div>
+  </div>`;
 }
 
 function renderHome() {
@@ -905,13 +1076,14 @@ function renderHome() {
       <p class="when"><b>Thursday, October 15</b><span>5:00–8:30 p.m. at 259 10th Avenue</span></p>
       <ol class="agenda">
         ${AGENDA.map(a => `
-          <li class="${a.courses || a.feature ? "feature" : ""}">
+          <li class="${a.courses || a.feature ? "feature" : ""}${a.courses ? " has-board" : ""}">
             <span class="time">${a.time}</span>
             <span class="what">${a.what}
               ${a.detail ? `<span class="detail">${a.detail}</span>` : ""}
-              ${a.courses ? spectrum() + `<a class="detail" href="#/catalog">Browse the course catalog</a>` : ""}
+
               ${a.ema ? `<a class="detail" href="#/ema">About the <i>ema</i> project</a>` : ""}
             </span>
+            ${a.courses ? courseBoard() : ""}
           </li>`).join("")}
       </ol>
     </div>
@@ -931,17 +1103,6 @@ function renderHome() {
     </div>
   </section>
 
-  <section class="catalog" id="catalog" aria-labelledby="catalog-title">
-    <div class="wrap">
-      <h2 id="catalog-title">Course catalog</h2>
-      <ol class="ways">
-        ${WAYS.map(w => `
-          <li><a href="#/${w.n}" style="--c:${w.c}">
-            <span class="numeral">${w.n}</span><span>${w.name}</span>
-          </a></li>`).join("")}
-      </ol>
-    </div>
-  </section>
   ${FOOTER}`;
 }
 
@@ -1024,7 +1185,7 @@ function playIntro() {
   const S = [];
   // I — glides across "Thirteen", lands in the far upper-right corner, rests, flies off.
   S.push({ t: 200, px: sz(.16), from: [-0.08 * W, Wd[0].y - .12 * H], segs: [
-    { c1: P(.08, .12), c2: at(0, -.12, .05), to: at(0, .1, -.02), dur: 1700, ease: "linear", wing: "auto", reveal: 0, revealAt: .6 },
+    { c1: P(.08, .12), c2: at(0, -.12, .05), to: at(0, .1, -.02), dur: 1100, ease: "linear", wing: "auto", reveal: 0, revealAt: .6 },
     { c1: "smooth", c2: P(.84, .05), to: P(.9, .1), dur: 1700, ease: "out", land: true },
     { perch: 900 },
     { c1: P(.95, .04), c2: P(1.02, .02), to: P(1.15, -.1), dur: 1200, ease: "in" } ] });
@@ -1052,7 +1213,7 @@ function playIntro() {
   const feet7 = [atW.l + atW.w * .2, atW.t + atW.h * .3];
   S.push({ t: 0, px: sz(.17), from: [1.12 * W, atW.y - .32 * H], segs: [
     { c1: [.92 * W, atW.y - .34 * H], c2: at(4, .12, -.1), to: at(4, -.02, .02), dur: 1400, ease: "linear", wing: "glide", reveal: 4, revealAt: .8 },
-    { c1: "smooth", c2: [.18 * W, atW.y - .22 * H], to: [-.15 * W, atW.y - .36 * H], dur: 900, ease: "linear", wing: "flap", hz: 1.2 } ] });
+    { c1: "smooth", c2: [.18 * W, atW.y - .22 * H], to: [-.15 * W, atW.y - .36 * H], dur: 800, ease: "linear", wing: "flap", hz: 1.25 } ] });
   // VIII — a huge, soft-focus bird sweeps past in the foreground.
   S.push({ t: 6400, px: sz(1.05), blur: 3, from: P(-.45, .95), segs: [
     { c1: P(.15, .78), c2: P(.7, .84), to: P(1.45, .66), dur: 1700, ease: "linear", wing: "flap", hz: .7 } ] });
@@ -1080,16 +1241,17 @@ function playIntro() {
   const final = perchAt(feetFinal, kFinal);
   S.push({ t: 0, px: 180 * kFinal, final: true, from: P(1.08, .92), segs: [
     { c1: P(.86, .94), c2: at(5, .22, .09), to: at(5, -.08, .01), dur: 1500, ease: "linear", wing: "flap", reveal: 5, revealAt: .72 },
-    { c1: "smooth", c2: [final[0] - .2 * W, final[1] - .16 * H], to: final, dur: 1300, ease: "out", land: true, revealOnLand: 6 },
+    { c1: "smooth", c2: [final[0] - .2 * W, final[1] - .16 * H], to: final, dur: 1300, ease: "out", land: true },
     { perch: Infinity } ] });
 
   // Pacing: the words appear at a steady reading pace (about one every 0.65 s).
   // Birds that reveal a word are started so they cross it on cue; the others fill
-  // in around them. Every other bird is gone before "Artificial" appears, and the
-  // last bird lands on the title as "Intelligence" appears.
+  // in around them. Every other bird is gone before "Artificial" appears. "Intelligence"
+  // follows at the same pace, and the last bird touches down on the title just as a
+  // reader would be finishing that word.
   const DUR = 0.5;
-  const WORD_TIMES = [550, 1200, 1850, 2500, 3150, 3800];   // Thirteen … Artificial
-  const STARTS = { 1: 600, 4: 300, 7: 1500, 8: 1600, 9: 1900, 10: 2200, 11: 2400 };
+  const WORD_TIMES = [400, 950, 1500, 2050, 2600, 3150];   // Thirteen … Artificial
+  const STARTS = { 1: 400, 4: 175, 7: 975, 8: 1075, 9: 1275, 10: 1500, 11: 1700 };
   S.forEach(b => b.segs.forEach(g => { if (g.dur) g.dur *= DUR; if (g.perch && isFinite(g.perch)) g.perch *= DUR; }));
   const revealOffset = (b) => {
     let acc = 0;
@@ -1109,6 +1271,12 @@ function playIntro() {
   const fin = S.find(b => b.final);
   const finReveal = fin.segs[0].dur * fin.segs[0].revealAt;
   fin.t = Math.max(WORD_TIMES[5], lastExit + 60) - finReveal;
+  const WORD_GAP = 550;      // same rhythm as the words before it
+  const READ_TIME = 850;     // the word fades in, then takes a moment to read
+  const intelT = fin.t + finReveal + WORD_GAP;
+  const landT = intelT + READ_TIME;
+  fin.segs[1].dur = Math.max(500, landT - (fin.t + fin.segs[0].dur));
+  let intelShown = false;
 
   /* ---------------- The birds themselves ---------------- */
   const ease = {
@@ -1305,6 +1473,7 @@ function playIntro() {
     if (t0 === null) { t0 = ts; last = ts; }
     const t = ts - t0, dt = Math.min(50, ts - last);
     last = ts;
+    if (!intelShown && t >= intelT) { intelShown = true; words[6].classList.add("on"); }
     for (const b of S) {
       if (b.gone || t < b.t) continue;
       if (!b.el) { spawn(b); showCount(spawned++); }
@@ -1344,10 +1513,13 @@ function buildIndex() {
         text: "Wallace Stevens " + WAYS.map(w => w.stanza).join(" ") });
   WAYS.forEach((w, wi) => {
     add({ kind: "Lens " + w.n, title: w.name, href: "#/" + w.n, c: w.c, text: w.stanza });
+    if (NOT_RUNNING[w.n]) add({ kind: "Course · " + w.name, title: NOT_RUNNING[w.n], href: "#/" + w.n, c: w.c, text: "Not running at this time." });
+    (LENS_READINGS[w.n] || []).forEach(r => add({ kind: "Reading · " + w.name, title: strip(r.title), href: "#/" + w.n, c: w.c,
+          text: [r.author, r.note].join(" ") }));
     COURSES[w.n].forEach((c, ci) => {
       const href = "#/" + w.n + "/" + (ci + 1);
       add({ kind: "Course · " + w.name, title: strip(c.title), href, c: w.c,
-            text: [joinNames(c.people), c.room ? "Room " + c.room : "", ...c.desc.map(strip)].join(" ") });
+            text: [joinNames(c.people), c.room ? "Room " + c.room : "", ...c.desc.map(strip), ...(c.questions || [])].join(" ") });
       c.people.forEach(p => add({ kind: (c.role.startsWith("Presenter") ? "Presenter" : "Faculty") + " · " + strip(c.title),
             title: p.name, href, c: w.c, text: strip(p.bio || "") }));
       c.readings.forEach(r => add({ kind: "Reading · " + strip(c.title), title: strip(r.title), href, c: w.c,
