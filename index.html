@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Thirteen Ways of Looking at AI · Avenues New York</title>
-<meta name="description" content="Thirteen Ways of Looking at AI: an evening of learning and conversation for Avenues New York parents, Thursday, October 15, 5:00–8:30 p.m.">
+<meta name="description" content="Thirteen Ways of Looking at AI: an evening of learning and conversation for Avenues New York parents, Thursday, October 15, 5:00–8:45 p.m.">
 <meta name="theme-color" content="#3E69B2">
 <meta property="og:title" content="Thirteen Ways of Looking at AI">
-<meta property="og:description" content="An evening of learning and conversation for Avenues New York parents. Thursday, October 15, 5:00–8:30 p.m.">
+<meta property="og:description" content="An evening of learning and conversation for Avenues New York parents. Thursday, October 15, 5:00–8:45 p.m.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233E69B2'/%3E%3Cpath d='M10 50 L28 40 C30 30 38 24 46 24 C50 18 56 18 58 24 L62 27 L57 29 C55 36 48 42 38 44 L18 52 Z' fill='%23000'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -475,23 +475,28 @@ const WAYS = [
 
 /* Facilitator bios, keyed by name as it appears in the catalog. */
 const BIOS = {
+  "Chadd Clairmont": "Chadd Clairmont joined Avenues in 2025 and currently teaches Intro to Calculus and Advanced Computer Science courses. A math teacher with a background in software development, he previously spent five years at Blair Academy in New Jersey teaching Algebra 2 and Advanced Statistics, where he built a statistics program around interactive lessons and large real-world data sets. Before teaching full time, he worked as a lead web developer and taught coding to younger students at The Coding Space. Chadd holds bachelor’s degrees in mathematics and computer science from Rollins College.",
+  "Chris Richter": "Chris Richter rejoined Avenues New York in 2022. Focusing on World Course, Chris brings a decade of experience from Southington Public Schools, where he taught history and civics in the middle and upper grades, as well as experience teaching at Sidwell Friends School in Washington, D.C. In 2015, he was named Teacher of the Year by Southington Public Schools and was featured in the <em>Southington Observer</em> article “Planning for Technology: School District Continues to Plan Long Term.”",
+  "Ranjan Roy": "Ranjan Roy is VP, Industry Lead—Retail at Writer, where he advises CMOs and leadership teams at the world’s largest enterprises on AI strategy. With a 15-year career at the intersection of language, AI, and business, he has built and deployed applied AI across startups and corporations. He co-founded Informerly, an NLP-powered news personalization startup, and later pioneered generative AI for content at scale as SVP of Strategy at Adore Me. A <em>Vogue Business</em> 2024 Top 100 Innovator, Ranjan is also co-author of <em>Margins</em>, a newsletter with over 35,000 subscribers exploring how technology shapes business and society. He has appeared regularly on CNBC and been featured in <em>The New York Times</em>.",
+  "Sinan Aral": "Sinan Aral is a scientist, entrepreneur, and investor who has been ranked among the top 50 management scholars in the world for the last five years and was rated the world’s “Top Digital Thinker” in 2021. One of the youngest tenured professors in the history of the MIT Sloan School, Sinan is the David Austin Chaired Professor of Management, Marketing, IT and Data Science at MIT, director of the MIT Initiative on the Digital Economy (IDE), and a co-founder and general partner of two venture capital firms: Manifest Capital and Milemark Capital. He has been called “one of the first and most prescient scholars of social media” by former U.S. Under Secretary of State Richard Stengel. His first book, <em>The Hype Machine</em>, which <em>New York</em> magazine called “prophetic,” was named a 2020 Best Book on Artificial Intelligence by <em>WIRED</em>. He is currently working on his second book, <em>Personal Intelligence</em>, about the hidden wave of AI personalization shaping our relationship to AI, to be published by W. W. Norton.",
+  "Blair Miller": "Blair Miller has spent her career using business to address pressing social challenges, with the last decade focused on the future of work. She is currently building a new nonprofit, RAISE US, a nonpartisan entity dedicated to supporting the American worker in the age of AI, backed by leading corporations, AI labs, philanthropies, and foundations. Throughout her career, she has worked across impact investing, philanthropy, and business, holding key positions at Two Sigma Impact, Blue like an Orange Sustainable Capital, the family office of businessman Ray Chambers, and Acumen. She has also taken on multiple advisory roles, including with the Governor of Maryland, the Rockefeller Foundation, and fast-growing AI-driven talent companies like Andela and FutureFit AI.",
+  "Kathleen Radigan": "Kathleen Radigan joined Avenues in 2022 as a 9th-grade English teacher. She has completed a post-master’s advanced certificate in adolescent education at Hunter College and received a master of fine arts in poetry from Boston University. She holds a bachelor’s degree in English literature from Wesleyan University. In addition to teaching, Kathleen is a poet and cartoonist. Her work has appeared in <em>The New Yorker</em>, <em>Guernica</em>, <em>The Boston Globe</em>, <em>The Rumpus</em>, and <em>The Sun</em>, among other journals.",
   "Scarlett Cheng": "Sijia (Scarlett) Cheng joined Avenues in 2023 and teaches Chinese-side art for the ELC and Lower Division. She holds a master’s degree in Art Education from Teachers College, Columbia University, and a bachelor’s degree in Textile/Surface Design from the Fashion Institute of Technology. Her interests include art and technology, textile design, and digital art, with experience using Photoshop, Illustrator, Unreal Engine, Blender, and Unity.",
   "Grace Hu": "Grace Hu joined Avenues in 2021 and teaches Chinese-side visual art in the Lower Division. Grace received her master’s degree in arts administration from NYU and is currently pursuing her doctoral degree in Art and Art Education at Columbia University, Teachers College. Her primary research topic is integrating Asian culture into the art curriculum and multiculturalism in art class. In summer 2020, Grace collaborated with the Smithsonian National Museum of Asian Art. She created two interdisciplinary lesson plans based on the museum collections.",
   "JP Connolly": "JP joined Avenues in 2019 and is an associate division head in the Upper Division, working primarily with 9th grade. He has taught microbiology, anatomy and physiology, pathology, molecular genetics, biotechnology, bioethics, and earth science. Particular passions include digital health, computational thinking, building growth mindsets, resilience, academic program design, AI, bioethics, civics, and bread baking.",
   "Marytere Garza": "Marytere joined Avenues in 2016 and is the Spanish-side librarian for the ELC and Lower Division. She has taught 4th-grade bilingual education, 3rd-6th English as a second language, kindergarten English, and 5th-grade Spanish immersion. She is passionate about children’s literature, Spanish literature, reading, and research.",
-  "Charlene Sung": "Charlene joined Avenues in 2025 and is the Chinese English Librarian for the ELC and Lower Division. She has taught for over a decade in public and independent schools from New York to Shanghai. In addition to her teaching experience, Charlene is also a writer, working on children's picture books focused on multiculturalism and social-emotional learning. She is passionate about children’s literature, reading, and language learning.",
+  "Charlene Sung": "Charlene joined Avenues in 2025 and is the Chinese-side librarian for the ELC and Lower Division. She has taught for over a decade in public and independent schools from New York to Shanghai. In addition to her teaching experience, Charlene is also a writer, working on children's picture books focused on multiculturalism and social-emotional learning. She is passionate about children’s literature, reading, and language learning.",
   "Sara Hayes": "Sara joined Avenues in 2019 and is a technology integrator across all divisions. She previously taught 5th-grade special education in NYC public schools and is passionate about writing, technology, and creative computation. Her favorite book of all time is <em>Lifelong Kindergarten: Cultivating Creativity Through Projects, Passion, Peers, and Play</em>, by Michael Resnick.",
   "JD Pirtle": "JD Pirtle joined Avenues in 2026 as the 9th grade Design and Engineering teacher. JD has been teaching fine arts, design, and engineering since 2013. He received a BFA in Digital Art and Experimental Media from the Center for Digital Art and Experimental Media (DXARTS) at the University of Washington, an MFA in Electronic Visualization and New Media Arts from the University of Illinois Chicago, and is currently a PhD candidate in Education Policy Studies: Social Foundations of Education at the University of Illinois Chicago.",
   "Jonathan Scolnick": "Jonathan Scolnick joined Avenues in 2023 and has worked as a Literature and HIP teacher here. Prior to Avenues, Jonathan worked at schools in Brooklyn, Medellin, and Buenos Aires. He received a master’s degree in English Education from N.Y.U. and earned a BA in Literature and Rhetoric from the University of Illinois (Champaign-Urbana).",
   "Alia Methven": "Alia joined Avenues in its inaugural year in 2012 as director of library services. Alia is a teacher and librarian, teaching research skills to middle- and upper-grade students and working extensively with the history department to prepare students for research assignments. In addition to developing the digital citizenship curriculum as it pertained to information literacy, she helped students with individual research assignments, showing them how to use databases, research relevant sources, and create bibliographies.",
   "Yi-Ching Hsieh": "Yi-Ching joined Avenues in 2015 as a Chinese teacher in the middle grades and is now a technology integrator for all divisions. Before joining Avenues, Yi-Ching served as head of the Mandarin department and a curriculum developer at Carousel of Languages. While living in Taiwan, Yi-Ching worked as the associate director of the Mei-Chao Day Care School (Kaohsiung, Taiwan). She also served as a college lecturer and assistant at the Wenzao Ursuline University of Languages (Kaohsiung, Taiwan).",
-  "Davin Sweeney": "Davin is the Director of College Counseling in his 7th year at Avenues. He lives in the Bronx with his wife and daughter, who is an 8th grader here. He hopes to use this evening to help him better prepare to launch his child and yours safely and sanely into the future under discussion. His favorite movie is “Terminator 2,” and he still has a T2 t-shirt he got for free from his local video store in 1993.",
   "Warren Tappe": "Warren joined Avenues in 2016 as a science teacher in the Upper Division, hailing from the Cairo American College (Maadi, Egypt), where he spent over 20 years teaching courses such as International Baccalaureate physics, mathematics, cosmology, and physical science. Warren received a B.S. in mathematics and physics from SUNY Stonybrook and earned an M.S. in physics secondary education from SUNY New Paltz.",
   "Todd Shy": "Todd Shy joined Avenues in its inaugural year in 2012 as a humanities instructor in the middle grades. He later became director of the Mastery program and High Intensity Practice in writing. In the fall of 2018, Todd assumed the role of head of the Upper Division and is now in his third year as head of school. He received a B.A. from the University of Virginia, completed graduate coursework at King’s College London, and obtained a master of divinity from Princeton Theological Seminary.",
   "Emma Heath": "Emma joined Avenues in 2022 as an English teacher in the Upper Division. Previously, she worked at Dunn Boarding School in California, where she taught 9th-grade English and 11th-grade U.S. History. Before that, she worked as a journalist at the <em>San Francisco Chronicle</em>, and still occasionally indulges journalistic impulses as a freelance writer.",
   "Nadine Bou Rached": "Nadine joined Avenues in 2018 as a science teacher in the Upper Division, with vast experience teaching high school biology and environmental sciences in the United States and Lebanon. Nadine also served as a medical research assistant at the American University of Beirut, and her work resulted in published articles in prestigious American Journals.",
   "Sam Basuk": "Sam joined Avenues in 2018 as a technology integrator for all divisions. She is particularly interested in system integrations and technology and has a B.A. in English literature from Franklin and Marshall College and an M.A. in Educational Leadership, Policy and Advocacy from New York University. Her favorite book of all time is <em>Inspector Gamache</em>, by Louise Penny.",
-  "Lia Muschellak": "Lia joined Avenues New York from the São Paulo campus in 2019, where she remains the director of technology. She is deeply passionate about education and strongly committed to improving learning opportunities through innovative strategies. She began her career as a high school science teacher in independent schools in Brazil, where she used digital tools to expand and improve learning opportunities."
+  "Lia Muschellack": "Lia joined Avenues New York from the São Paulo campus in 2019, where she remains the director of technology. She is deeply passionate about education and strongly committed to improving learning opportunities through innovative strategies. She began her career as a high school science teacher in independent schools in Brazil, where she used digital tools to expand and improve learning opportunities."
 };
 
 /* Readings and resources for a lens as a whole (used when no course runs through it). */
@@ -502,11 +507,11 @@ const LENS_READINGS = {
       url: "https://www.moralmachine.net/",
       note: "Decide what a self-driving car should do when every choice causes harm, then see how your answers compare with millions of people around the world." },
     { title: "Recommendation on the Ethics of Artificial Intelligence",
-      author: "UNESCO (2021)",
+      author: "UNESCO (November 2021)",
       url: "https://drive.google.com/file/d/1JxsGd1Bgr3JswYIV8F2SZbOnbNd3swNu/view?usp=sharing",
       note: "The first global standard on AI ethics, adopted by UNESCO’s member states, setting out values such as human rights, fairness, transparency, and human oversight." },
     { title: "Beware the Power of Prediction",
-      author: "Carissa Véliz, TED talk (TED2026, about 12 minutes)",
+      author: "Carissa Véliz, TED talk (April 2026)",
       url: "https://www.ted.com/talks/carissa_veliz_beware_the_power_of_prediction",
       note: "A philosopher argues that predictions are rarely neutral: from Roman emperors to today’s AI systems, they are often bids for power that shape the very futures they claim to foresee." }
   ]
@@ -542,15 +547,21 @@ const COURSES = {
   ],
   "II": [
     { title: "The Killer AI App Is Confidence: Parenting and Teaching for AI Resiliency",
+      questions: ["When does helping a child get unstuck (with or without AI) drive learning forward, and when does it actually prevent learning or growth?"],
       room: "717A",
       role: "Faculty", people: [person("JP Connolly")],
       desc: [
         "Every new assistive technology has offered reduced friction and offloaded cognitive tasks, but AI's ability to produce something plausible and complete, immediately, with no struggle, represents a major shift in the learning and professional environments. This capacity makes our new tools helpful for those who have already developed a sophisticated and skilled creative practice; for others without the self-confidence that comes with skill and competence, AI offers simultaneous off ramps from productive struggle, and the feelings of uncertainty that punctuate the learning process.",
         "In this session, we will explore a common theme that has emerged from conversations and workshops I've held with educators from private, public, and charter schools in over 10 states: specifically and explicitly fostering students' academic self-confidence—a well-founded belief that they can do hard things without being rescued—is the critical skill in the AI era. We'll examine that claim in an educational context briefly, then spend the majority of our time on what this moment asks of us as parents, working through real situations from home and school. The question underneath all of them is the same: will our children grow up steering, or getting steered?"
-      ], readings: [] },
+      ], readings: [
+        { title: "The Overhang",
+          author: "Ethan Mollick, One Useful Thing (September 2026)",
+          url: "https://www.oneusefulthing.org/p/the-overhang",
+          note: "Today’s AI is already far more capable than most people realize; the real opportunity lies in bringing our own expertise, judgment, and initiative to it." }
+      ] },
     { title: "Cultivating a Love of Reading in an Increasingly Digital World",
-      questions: ["What happens when children have the freedom to choose what they read, and how can that choice nurture their confidence, interests, and love of reading?", "What if, alongside asking, “What makes this a good book?”, we also asked, “What makes this a good book for this reader?” How can we honour each child’s unique reading journey and help them discover the confidence, joy, and sense of belonging that come with seeing themselves as a reader?"],
-      room: "702",
+      questions: ["What happens when children have the freedom to choose what they read, and how can that choice nurture their confidence, interests, and love of reading?", "What if, alongside asking, “What makes this a good book?”, we also asked, “What makes this a good book for this reader?” How can we honor each child’s unique reading journey and help them discover the confidence, joy, and sense of belonging that come with seeing themselves as a reader?"],
+      room: "609A",
       role: "Faculty", people: [person("Marytere Garza"), person("Charlene Sung"), person("Sara Hayes")],
       desc: [
         "As AI and digital technologies compete for children's attention, we'll explore in interactive ways how we can help children develop a lasting love of sustained, engaged reading. Together, we’ll examine research on the power of choice in developing confident and motivated readers, reflect on our own experiences as readers, and consider how giving children greater autonomy in what they read can foster both engagement and a lifelong love of reading."
@@ -572,7 +583,7 @@ const COURSES = {
         "Attensity! A Manifesto of the Attention Liberation Movement describes attention sanctuaries as protected spaces that shield human focus from digital exploitation and restore our collective attentional agency. Let's gather to identify the attention sanctuaries already thriving in our communities and explore how we might build and strengthen them—for our students and ourselves."
       ], readings: [
         { title: "Will the Humanities Survive Artificial Intelligence?",
-          author: "D. Graham Burnett, The New Yorker (April 26, 2025)",
+          author: "D. Graham Burnett, The New Yorker (April 2025)",
           url: "https://www.newyorker.com/culture/the-weekend-essay/will-the-humanities-survive-artificial-intelligence",
           note: "A Princeton historian reports from his own classroom on what AI means for the humanities, and argues their real work is asking the questions machines can’t." },
         { title: "Attention Sanctuaries: Social Practice Guidelines and Emergent Strategies in Attention Activism",
@@ -585,12 +596,18 @@ const COURSES = {
           note: "A visit to the Brooklyn school where people practice reclaiming their attention from screens, together." }
       ] },
     { title: "Beyond the AI Arms Race: What the US and China Can Learn from Each Other",
+      questions: ["What is the AI scene like in China?", "How does it compare to the way we talk about it in the USA?"],
       room: "705",
       role: "Faculty", people: [{ name: "Jesse Field", photo: "",
-        bio: "Jesse Field has worked with Avenues since 2020 to help launch the Shenzhen campus, and he also served as an Avenues Online faculty member. Previously, he has worked at Bard College and Peking University Affiliated High School. Currently in his fourth year at Avenues New York, Mr. Field serves as a Mastery Teacher for the upper grades.\n\nMr. Field’s education was at Harvard, the University of Texas, the University of Minnesota and Tsinghua University. He grew up in San Antonio, Texas, but lived and worked in China for many years. Off-campus, he enjoys living in New York City for the first time, indulging in flâneurie whenever possible. His hobbies include long-distance running and cooking." }],
+        bio: "Jesse Field has worked with Avenues since 2020 to help launch the Shenzhen campus, and he also served as an Avenues Online faculty member. Previously, he has worked at Bard College and Peking University Affiliated High School. Currently in his fourth year at Avenues New York, Mr. Field serves as a Mastery Teacher for the upper grades.\n\nMr. Field’s education was at Harvard, the University of Texas, the University of Minnesota, and Tsinghua University. He grew up in San Antonio, Texas, but lived and worked in China for many years. Off-campus, he enjoys living in New York City for the first time, indulging in flâneurie whenever possible. His hobbies include long-distance running and cooking." }],
       desc: [
-        "The race between the US and China to develop superintelligent systems is often cited as the reason why neither country can afford to slow down the training of frontier models. When we look beyond the competition, we see that each country has very different approaches to regulation, architecture and vision for AI. In many ways, the two approaches are complementary and, taken together, could point to a safer, more environmentally sustainable, human-centered approach to AI. In this class we’ll look at the approach that each country has taken and discuss what we might learn from getting beyond the hype of great power competition."
-      ], readings: [] }
+        "The race between the US and China to develop superintelligent systems is often cited as the reason why neither country can afford to slow down the training of frontier models. When we look beyond the competition, we see that each country has very different approaches to regulation, architecture, and vision for AI. In many ways, the two approaches are complementary and, taken together, could point to a safer, more environmentally sustainable, human-centered approach to AI. In this class we’ll look at the approach that each country has taken and discuss what we might learn from getting beyond the hype of great power competition."
+      ], readings: [
+        { title: "China’s Push Into A.I. Has Led to a Problem: Too Much Usage",
+          author: "The New York Times (October 2026)",
+          url: "https://www.nytimes.com/2026/10/02/world/asia/china-ai-overuse.html",
+          note: "As Beijing promotes AI in every corner of daily life, it is now grappling with overreliance, strained relationships, and a flood of low-quality AI content, and is writing rules to rein in misuse while still pushing the technology forward." }
+      ] }
   ],
   "IV": [
 
@@ -612,31 +629,45 @@ const COURSES = {
   "V": [
 
     { title: "Information Literacy, Discernment, and Thoughtful Use",
+      questions: ["What does it mean to be information literate in an age when AI can generate information that appears credible, but may not always be accurate or reliable?"],
       room: "706",
       role: "Faculty", people: [person("Alia Methven"), person("Yi-Ching Hsieh")],
       desc: [
         "Information literacy and AI literacy are becoming increasingly inseparable. Today’s online environment is vast, complex, and ever-changing—never has so much information been at our fingertips. It can be challenging for students, and sometimes even adults, to distinguish what is reliable from what is not.",
         "In this session, we’ll explore how Avenues is helping students develop the critical-thinking and information-literacy skills needed to navigate this landscape. We’ll also consider how large language models (LLMs) generate information and why understanding where information comes from—and knowing how to question, verify, and evaluate what AI produces—is becoming an essential part of information literacy.",
         "We’ll then apply that same lens of thoughtful evaluation to a few emerging AI tools, considering them against our teaching and learning framework and exploring when and how they can meaningfully support student learning, and consider how these principles might help parents navigate these same questions at home."
-      ], readings: [] }
+      ], readings: [
+        { title: "Measuring What Matters: Investigating What New Types of Assessments Reveal About Students’ Online Source Evaluations",
+          author: "Joel Breakstone, Sarah McGrew, and Mark Smith, Harvard Kennedy School Misinformation Review (February 2024)",
+          url: "https://doi.org/10.37016/mr-2020-133",
+          note: "Stanford and Maryland researchers look at how students actually judge online sources, and how to tell whether they are using the strategies professional fact checkers use." },
+        { title: "Media Literacy Education",
+          author: "Shanta Barman, in <em>Media &amp; Journalism Transformations: Emerging Trends and Paradigm Shifts</em> (PDF)",
+          url: "resources/media-literacy-education.pdf",
+          note: "An overview of what media literacy is, why it matters in a digital age, and how schools can teach students to question, verify, and engage responsibly with what they see online." },
+        { title: "The Penalty Students Pay for Using AI",
+          author: "Benjamin Riley, Education Next (September 2026)",
+          url: "https://www.educationnext.org/the-penalty-students-pay-for-using-ai/",
+          note: "Drawing on a study of about 27,000 students, Riley finds that those who leaned on generative AI put in less effort and scored lower on closed-book exams, with no offsetting learning gains." },
+        { title: "The Impact of AI on Children’s Development",
+          author: "Harvard EdCast podcast with Ying Xu, Harvard Graduate School of Education (October 2024)",
+          url: "https://www.gse.harvard.edu/ideas/edcast/24/10/impact-ai-childrens-development",
+          note: "Children can learn from well-designed AI tools, but those tools can’t replace human connection, which is why kids need AI literacy to weigh what AI tells them." },
+        { title: "What’s at Stake",
+          author: "Civic Online Reasoning, Digital Inquiry Group",
+          url: "https://cor.inquirygroup.org/whats-at-stake/",
+          note: "Why students need explicit training to judge online information, and a free curriculum for building those skills." }
+      ] }
   ],
   "VI": [
 
   ],
   "VII": [
-    { title: "AI &amp; The Student Journey To, Through, and After College",
-      room: "709",
-      role: "Faculty", people: [person("Davin Sweeney")],
-      desc: [
-        "For parents thinking about their children's education, especially when it comes to their future as independent adults, it has always been uncertain and uncomfortable. The explosion of AI onto the educational and economic stage introduces a new brand of uncertainty into the parenting equation.",
-        "Let's examine the current conversations taking place about preparing and applying to college, approaches being taken once students arrive to college, and how the labor market is changing so we can understand how best to educate ourselves, guide our children, and remain calm in the process."
-      ], readings: [] },
     { title: "AI at MIT: A Glimpse into the Frontier of Higher Ed",
       room: "9th Floor Commons",
       role: "Presenter & Avenues Parent", people: [person("Sinan Aral")],
       desc: [
         "MIT has long been at the cutting edge of engineering and technological advancement. Avenues parent and AI Advisory Board member Sinan Aral will share his perspective on how technology and higher education are shifting in response to developments in AI.",
-        "Sinan is the David Austin Professor of Management, Marketing, IT and Data Science at the MIT Sloan School of Management and director of the MIT Initiative on the Digital Economy. An internationally recognized authority on AI, digital platforms and social media, he is also an entrepreneur, investor and author of <em>The Hype Machine</em>."
       ], readings: [] }
   ],
   "VIII": [
@@ -650,38 +681,38 @@ const COURSES = {
         "Along the way, we will ask, and attempt to answer together, some crucial questions about education technology."
       ], readings: [
         { title: "On Redesigning EdTech Systems",
-          author: "Micah Blachman (July 22, 2026)",
+          author: "Micah Blachman (July 2026)",
           url: "https://micahblachman.com/p/on-redesigning-edtech-systems",
           note: "A thoughtful piece by a 12-year-old who blogs about technology: schools should build trust and teach students to behave well online, rather than relying on blocking and surveillance." },
         { title: "A New Direction for Students in an AI World: Prosper, Prepare, Protect",
-          author: "Mary Burns, Rebecca Winthrop, Natasha Luther, Emma Venetis and Rida Karim, Brookings Institution (January 14, 2026)",
+          author: "Mary Burns, Rebecca Winthrop, Natasha Luther, Emma Venetis, and Rida Karim, Brookings Institution (January 2026)",
           url: "https://www.brookings.edu/articles/a-new-direction-for-students-in-an-ai-world-prosper-prepare-protect/",
           note: "A yearlong global study weighing the benefits and harms of AI in school, which concludes that for now the risks to children’s foundational development outweigh the gains." },
         { title: "Ed Tech Is Profitable. It Is Also Mostly Useless",
-          author: "The Economist (January 22, 2026)",
+          author: "The Economist (January 2026)",
           url: "https://www.economist.com/united-states/2026/01/22/ed-tech-is-profitable-it-is-also-mostly-useless",
           note: "A look at how much schools spend on education technology, and how little evidence there is that most of it improves learning." }
       ] }
   ],
   "IX": [
-    { title: "Life, AI and Consciousness. Three Golden Threads?",
+    { title: "Life, AI, and Consciousness. Three Golden Threads?",
       questions: ["How blurry is the line between life and non-life?", "How does the issue of free will apply to humans and to AI?", "Does how we treat AI depend on whether or not it is conscious?"],
       room: "710",
       role: "Faculty", people: [person("Warren Tappe")],
       desc: [
-        "The relationships that exist between Life, AI and Consciousness have recently surged into the spotlight for many reasons. All three will inform the coming ethical dilemmas we will face as well as the existential risks that come along with them.",
+        "The relationships that exist between Life, AI, and Consciousness have recently surged into the spotlight for many reasons. All three will inform the coming ethical dilemmas we will face as well as the existential risks that come along with them.",
         "We will take a close look in this session."
       ], readings: [
-        { title: "Life, AI and Consciousness",
+        { title: "Life, AI, and Consciousness",
           author: "Course document (Google Doc)",
           url: "https://docs.google.com/document/d/1eQcjUMpvoA-ykd0BHXqV2qzGc2tFTEE_7tmPHCT7AfA/edit?usp=sharing",
           note: "Material for this session, including the question of whether AI systems might themselves be conscious." },
         { title: "<em>Being You: A New Science of Consciousness</em>",
-          author: "Anil Seth (book, 2021)",
+          author: "Anil Seth (September 2021)",
           url: "https://www.harvard.com/book/9781524742874",
           note: "A neuroscientist argues that our experience of the world and of ourselves is a kind of “controlled hallucination,” rooted in being living bodies." },
         { title: "<em>The Feeling of Life Itself: Why Consciousness Is Widespread but Can’t Be Computed</em>",
-          author: "Christof Koch (book, 2019)",
+          author: "Christof Koch (September 2019)",
           url: "https://www.penguinrandomhouse.com/books/648003/the-feeling-of-life-itself-by-christof-koch/",
           note: "A leading consciousness researcher makes the case that experience is common in living things, and that a computer simulating a brain would not thereby feel anything." }
       ] }
@@ -698,7 +729,7 @@ const COURSES = {
         "By reading poetry and prose by humans and language models (Mary Oliver, Saul Bellow, ChatGPT + Gemini), we will contemplate the value of the human creative process: What does its inevitably illogical nature tell us about being alive? And what role does AI have in the great tradition of representing human experience?"
       ], readings: [
         { title: "The End of Reading Is Here",
-          author: "Rose Horowitch, The Atlantic (August 2026)",
+          author: "Rose Horowitch, The Atlantic (July 2026)",
           url: "https://drive.google.com/file/d/13rvOYS7vTubYIm5A209hswvdAq6PPR-C/view?usp=sharing",
           note: "Americans read far less than they used to, the article argues, and the age of reading may turn out to be a brief chapter in human history." }
       ] }
@@ -713,7 +744,7 @@ const COURSES = {
         "Care, however, is about more than finding the right tools. Everyday human interactions can offer opportunities to communicate, learn, build trust, and connect. Could AI strengthen these opportunities, or might relying on it too heavily reduce them? We’ll also consider questions of privacy, consent, reliability, and whose decisions shape the support someone receives. Rather than assuming that more technology means better care, we’ll explore where AI might help, where it could cause harm, and what we should be careful not to lose. No science or technology background is needed. Just bring your curiosity."
       ], readings: [
         { title: "To Stay in Her Home, She Let In an A.I. Robot",
-          author: "The New York Times (February 12, 2026)",
+          author: "The New York Times (February 2026)",
           url: "https://www.nytimes.com/2026/02/12/us/elliq-ai-robot-senior-companion.html",
           note: "An 85-year-old woman lives with ElliQ, a tabletop AI companion, raising the session’s central question: can a machine support care and connection without replacing the human kind?" }
       ] }
@@ -733,18 +764,24 @@ const COURSES = {
           note: "A tour of the AI tools that let you build software by describing what you want, from all-in-one app builders to coding assistants, and what each is best suited for." }
       ] },
     { title: "Designing AI for Inquiry: From Answer Machines to Thinking Partner",
+      questions: ["How might we leverage the power of AI while establishing clear guardrails for students?"],
       room: "715",
       role: "Faculty", people: [person("Chris Richter")],
       desc: [
         "Artificial intelligence can give students answers in seconds—but what if we designed AI to ask better questions instead? In this hands-on workshop, participants will explore how educators can create AI-powered learning experiences that encourage inquiry, reflection, and deeper thinking. Using a classroom chatbot developed for a 9th-grade humanities course as a case study, we’ll examine how AI can act as a mentor: challenging assumptions, asking follow-up questions, helping students work with evidence, and guiding them through complex problems without simply doing the thinking for them.",
         "Participants will experience an inquiry-based AI system from a student’s perspective, look behind the scenes at how it was designed, and consider how similar approaches could work across different subjects and age levels. No technical or AI experience is necessary—just curiosity about what teaching and learning might look like when AI becomes a thinking partner rather than an answer machine."
-      ], readings: [] }
+      ], readings: [
+        { title: "Thomas Cole, American Moralist",
+          author: "Adapted from <em>The New York Times</em> for 9th-grade World Course (Google Doc)",
+          url: "https://docs.google.com/document/d/1K0XJgMuOoRndHzc57CNkUrlcE81A5FNx72yjcns1dHg/edit?usp=sharing",
+          note: "A class reading on the painter Thomas Cole and the industrial landscapes he grew up in, the kind of text students explore with the inquiry chatbot." }
+      ] }
   ],
   "XIII": [
     { title: "The AI Revolution: Have We Been Here Before?",
       questions: ["Looking back at past technological revolutions, the futures people feared and the futures they hoped for were both usually wrong. What makes us think we are better at predicting this one?", "What would it take for parents, schools, and communities to have a real hand in shaping how AI enters our children’s lives, rather than just reacting to it?"],
       room: "716",
-      role: "Faculty", people: [person("Lia Muschellak")],
+      role: "Faculty", people: [person("Lia Muschellack")],
       desc: [
         "What if the future we fear and the future we hope for are both distracting us from the one we could build? Imagine your child growing up in a world where learning has no ceiling, creativity has fewer barriers, and once-impossible problems finally have solutions. Now imagine that same world making it harder to think independently, know whom to trust, or find a place to belong. Both stories sound plausible. Neither is the whole story.",
         "Tomorrow is unknown territory, but some of our hopes and fears have been here before. Another technology once promised to transform human life while leaving even its creators wondering whether they should stop. What followed might surprise you. It might also change where you look for clues about what comes next.",
@@ -752,15 +789,15 @@ const COURSES = {
       ], readingsNote: "All three are optional; no pre-reading required.",
       readings: [
         { title: "Asilomar 1975: DNA Modification Secured",
-          author: "Paul Berg, Nature (2008)",
+          author: "Paul Berg, Nature (September 2008)",
           url: "https://www.nature.com/articles/455290a",
           note: "Two pages by the scientist who called a halt to his own field, looking back thirty-three years later at whether it worked." },
         { title: "<em>The Code Breaker</em>",
-          author: "Walter Isaacson (2021)",
+          author: "Walter Isaacson (March 2021)",
           url: "https://a.co/d/0az6iCiu",
           note: "The long read: how a handful of scientists and the institutions around them shaped what gene editing became." },
         { title: "There Is Something We Have to Do Right Now About A.I.",
-          author: "Ezra Klein, The New York Times (September 20, 2026)",
+          author: "Ezra Klein, The New York Times (September 2026)",
           url: "https://www.nytimes.com/2026/09/20/opinion/ai-ban-self-improvement-recursive-models.html",
           note: "A current argument that slowing down is not enough. Worth reading next to the Berg essay to see what the two have in common." }
       ] }
@@ -803,7 +840,7 @@ function renderBio(p) {
 function renderReadings(list, names) {
   if (!list.length) {
     return `<ul class="readings">
-      <li><span class="placeholder">${names} will share course readings and resources here.</span></li>
+      <li><span class="placeholder">${names} will share resources for further exploration here.</span></li>
       <li aria-hidden="true"><span class="empty"></span><span class="empty" style="width:45%"></span></li>
       <li aria-hidden="true"><span class="empty" style="width:60%"></span><span class="empty" style="width:35%"></span></li>
     </ul>`;
@@ -858,7 +895,7 @@ function renderWay(n) {
       </div>
       ${c.questions ? `
       <div class="guiding">
-        <h3>Guiding Questions</h3>
+        <h3>Guiding questions</h3>
         <ul>${c.questions.map(q => `<li>${q}</li>`).join("")}</ul>
       </div>` : ""}
       <div class="extras${c.readings.length ? "" : " extras-single"}">
@@ -867,7 +904,7 @@ function renderWay(n) {
           ${c.people.map(renderBio).join("")}
         </section>
         ${c.readings.length ? `<section>
-          <h3>Course Readings/Resources</h3>
+          <h3>For further exploration</h3>
           ${c.readingsNote ? `<p class="readings-note">${c.readingsNote}</p>` : ""}
           ${renderReadings(c.readings, joinNames(c.people))}
         </section>` : ""}
@@ -887,7 +924,7 @@ function renderWay(n) {
     <div class="wrap">
       <div class="extras">
         <section>
-          <h3>Course Readings/Resources</h3>
+          <h3>For further exploration</h3>
           ${renderReadings(LENS_READINGS[n], "")}
         </section>
       </div>
@@ -903,7 +940,7 @@ function renderWay(n) {
     </div>
   </nav>
   <footer><div class="wrap">
-    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
+    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking, and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
     <p class="imprint">Avenues New York · Thirteen Ways of Looking at AI · October 2026</p>
   </div></footer>`;
 }
@@ -924,7 +961,7 @@ const spectrum = () => `<div class="spectrum">${WAYS.map(w =>
   `<a href="#/${w.n}" style="background:${w.c}" title="${w.n}. ${w.name}" aria-label="${w.n}. ${w.name}"></a>`).join("")}</div>`;
 
 const FOOTER = `<footer><div class="wrap">
-    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
+    <p class="colophon">${bird()}<span>A note on how this site was made: the ideas, the fact-checking, and the agonizing over commas all came from actual humans. An AI was then handed their thinking and asked to make it fly, which it did quickly. The courses, however, were designed and will be taught entirely by very smart humans, none of whom could ever be replaced by a machine. (We asked the machine. It agreed.) Consider it a fourteenth way of looking at AI.</span></p>
     <p class="imprint">Avenues New York · Thirteen Ways of Looking at AI · October 2026</p>
   </div></footer>`;
 
@@ -934,7 +971,7 @@ const AGENDA = [
   { time: "5:30–6:30 p.m.", what: "Small-group courses", detail: "Thirteen lenses, many courses; you’ll take part in one course", courses: true },
   { time: "6:30–6:45 p.m.", what: "Transition to the panel discussion", detail: "Head to Food" },
   { time: "6:45–7:45 p.m.", what: "Panel discussion", detail: "In Food, with members of our AI Advisory Board", feature: true },
-  { time: "7:45–8:30 p.m.", what: "Food, drinks, and conversation", detail: "Make an <i>ema</i> for our community art project", ema: true }
+  { time: "7:45–8:45 p.m.", what: "Food, drinks, and conversation", detail: "Make an <i>ema</i> for our community art project", ema: true }
 ];
 
 
@@ -969,7 +1006,7 @@ function renderEma() {
       <div class="ema-hero-body">
         <h1><i>Ema</i>: Wishes Made Visible</h1>
         <p class="ema-intro"><i>Ema</i> are wishing plaques from Japanese shrines. Tonight, ours are blackbirds.</p>
-        <p class="ema-hero-sub">A community art project during food, drinks, and conversation, 7:45–8:30 p.m. in Food.</p>
+        <p class="ema-hero-sub">A community art project during food, drinks, and conversation, 7:45–8:45 p.m. in Food.</p>
         <div class="ema-prompt ema-prompt-hero">
           <p class="ema-prompt-label">Tonight’s prompt</p>
           <p class="ema-prompt-text">Write what you hope for your children, or for any child, as they grow up in a world with AI.</p>
@@ -1055,7 +1092,7 @@ function renderHome() {
   <section class="prose home-section" id="about" aria-labelledby="about-title">
     <div class="wrap"><div>
       <h2 id="about-title">An evening of learning and conversation</h2>
-      <p class="when"><b>Thursday, October 15</b><span>5:00–8:30 p.m. at 259 10th Avenue</span></p>
+      <p class="when"><b>Thursday, October 15</b><span>5:00–8:45 p.m. at 259 10th Avenue</span></p>
       <p class="lead">For several years, Avenues has been studying AI. Last fall we shared our guiding principles; since then we have kept building our curriculum and formed an AI Advisory Board. Still, the questions keep evolving:</p>
       <ul class="questions">
         <li>Where is AI now, and where is it headed?</li>
@@ -1073,7 +1110,7 @@ function renderHome() {
   <section class="home-section agenda-section" id="agenda" aria-labelledby="agenda-title">
     <div class="wrap">
       <h2 id="agenda-title">Agenda</h2>
-      <p class="when"><b>Thursday, October 15</b><span>5:00–8:30 p.m. at 259 10th Avenue</span></p>
+      <p class="when"><b>Thursday, October 15</b><span>5:00–8:45 p.m. at 259 10th Avenue</span></p>
       <ol class="agenda">
         ${AGENDA.map(a => `
           <li class="${a.courses || a.feature ? "feature" : ""}${a.courses ? " has-board" : ""}">
@@ -1493,21 +1530,21 @@ const HOME_SECTIONS = ["about", "agenda", "poem", "catalog"];
 const strip = (h) => { const d = document.createElement("div"); d.innerHTML = h; return d.textContent; };
 function buildIndex() {
   const items = [];
-  const add = (o) => items.push({ ...o, hay: (o.title + " " + o.text + " " + o.kind + " " + (o.keys || "")).toLowerCase() });
+  const add = (o) => { const h = (o.title + " " + o.text + " " + o.kind + " " + (o.keys || "")).toLowerCase(); items.push({ ...o, hay: h.includes("a.i.") ? h + " ai" : h }); };
   // The site's main sections, so searching a section's name finds it directly.
   add({ kind: "Section", section: true, title: "Agenda", href: "#/agenda", keys: "schedule timeline program times evening",
         text: AGENDA.map(a => a.time + " " + a.what).join(" · ") });
   add({ kind: "Section", section: true, title: "About the evening", href: "#/about", keys: "summary overview introduction welcome invitation",
-        text: "Thursday, October 15, 5:00–8:30 p.m. at 259 10th Avenue." });
+        text: "Thursday, October 15, 5:00–8:45 p.m. at 259 10th Avenue." });
   add({ kind: "Section", section: true, title: "Course catalog", href: "#/catalog", keys: "courses classes sessions lenses menu list",
         text: "All courses, grouped into thirteen lenses: " + WAYS.map(w => w.name).join(", ") + "." });
   add({ kind: "Section", section: true, title: "Ema: Wishes Made Visible", href: "#/ema",
         keys: "ema plaque plaques art project community wish wishes shinto shrine japan horse kami blackbird messenger reception social",
-        text: "A community art project during food, drinks, and conversation: write what you hope for your children, or for any child, as they grow up in a world with AI, on a blackbird ema and hang it with the others." });
+        text: "A community art project during food, drinks, and conversation: write what you hope for your children, or for any child, as they grow up in a world with AI, on a blackbird ema." });
   add({ kind: "Section", section: true, title: "The poem", href: "#/poem", keys: "wallace stevens blackbird stanzas poetry",
         text: "“Thirteen Ways of Looking at a Blackbird” by Wallace Stevens." });
   add({ kind: "About the evening", title: "An evening of learning and conversation", href: "#/about",
-        text: "Thursday, October 15, 5:00–8:30 p.m., 259 10th Avenue. Avenues parents, AI Advisory Board, guiding principles, panel, thirteen lenses." });
+        text: "Thursday, October 15, 5:00–8:45 p.m., 259 10th Avenue. Avenues parents, AI Advisory Board, guiding principles, panel, thirteen lenses." });
   AGENDA.forEach(a => add({ kind: "Agenda · " + a.time, title: a.what, href: "#/agenda", text: strip(a.detail || "") }));
   add({ kind: "Poem", title: "Thirteen Ways of Looking at a Blackbird", href: "#/poem",
         text: "Wallace Stevens " + WAYS.map(w => w.stanza).join(" ") });
