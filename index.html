@@ -269,6 +269,10 @@
   .lens-readings { padding-top: 0; border-top: 0 !important; }
   .lens-readings .extras { margin-top: 0; grid-template-columns: minmax(0, 1fr); max-width: 680px; }
   .guiding { max-width: 68ch; margin: 30px 0 6px; }
+  .materials { max-width: 68ch; margin: 30px 0 6px; }
+  .materials h3 { margin: 0 0 12px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .materials .readings { border-left: 4px solid var(--c); }
+  .materials .readings li { padding: 8px 0 8px 20px; border-bottom: 0; font-size: 17px; }
   .guiding h3 { margin: 0 0 12px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
   .guiding ul { list-style: none; margin: 0; padding: 0; border-left: 4px solid var(--c); }
   .guiding li { padding: 8px 0 8px 20px; font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: -0.005em; }
@@ -527,6 +531,11 @@ const COURSES = {
       questions: ["How might AI expand the ways we perceive, explore, and extend the artistic process without replacing the act of thinking and creating?", "What possibilities emerge when we consider AI alongside children’s ideas, choices, and creative agency?"],
       room: "701",
       role: "Faculty", people: [person("Scarlett Cheng"), person("Grace Hu")],
+      materials: [
+        { title: "AI Behind the Scenes: Supporting Children’s Creativity Through Art",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1bpZ5QYl3kFy39MduPPLOa1m-ppPCe20u/view?usp=sharing" }
+      ],
       desc: [
         "How can AI support children’s creativity without taking over the creative process?",
         "In this session, we’ll explore how AI can work behind the scenes to help adults design creative experiences, help children visualize ideas, and extend or present their original artwork in new ways. Through examples from Lower Division art projects—including an interactive 3D grocery store, a Chinese character learning website, and animations created from students’ original artwork—we’ll explore possibilities that can extend from the classroom into the home. Parents will see simple demonstrations, try a short hands-on activity, and leave with practical ideas and strategies participants can use at home to create new art experiences with their children."
@@ -550,6 +559,14 @@ const COURSES = {
       questions: ["When does helping a child get unstuck (with or without AI) drive learning forward, and when does it actually prevent learning or growth?"],
       room: "717A",
       role: "Faculty", people: [person("JP Connolly")],
+      materials: [
+        { title: "Building Confidence to Counterbalance AI in Learners",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1K3mNPR3xHEMGa4dPZFnyIhD_vsyXZSSk/view?usp=sharing" },
+        { title: "The Killer App Is Confidence",
+          author: "Parent handout (PDF)",
+          url: "https://drive.google.com/file/d/1RspvDNwGnYKuY2nKsnEnO12oMZXjhYtl/view?usp=sharing" }
+      ],
       desc: [
         "Every new assistive technology has offered reduced friction and offloaded cognitive tasks, but AI's ability to produce something plausible and complete, immediately, with no struggle, represents a major shift in the learning and professional environments. This capacity makes our new tools helpful for those who have already developed a sophisticated and skilled creative practice; for others without the self-confidence that comes with skill and competence, AI offers simultaneous off ramps from productive struggle, and the feelings of uncertainty that punctuate the learning process.",
         "In this session, we will explore a common theme that has emerged from conversations and workshops I've held with educators from private, public, and charter schools in over 10 states: specifically and explicitly fostering students' academic self-confidence—a well-founded belief that they can do hard things without being rescued—is the critical skill in the AI era. We'll examine that claim in an educational context briefly, then spend the majority of our time on what this moment asks of us as parents, working through real situations from home and school. The question underneath all of them is the same: will our children grow up steering, or getting steered?"
@@ -577,6 +594,11 @@ const COURSES = {
       questions: ["What attention sanctuaries exist in our community?", "How might we be more aware of these spaces for ourselves and our students?"],
       room: "704",
       role: "Faculty", people: [person("Jonathan Scolnick")],
+      materials: [
+        { title: "Attention Sanctuaries",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1F-M8y_NvYXpPmmKeVBYXjDGXIIHfi5JC/view?usp=sharing" }
+      ],
       desc: [
         "Some would argue that our attention is being fracked by the biggest companies or the smartest people in tech. This is the new economy. Talking heads debate the extent of the destruction: whether AI will supercharge the depletion of our attention spans, alter our common humanity, or even obliterate the human race.",
         "I am no authority on any of this, and this workshop will offer neither another platform for debate nor despair. Instead, it is for those of us deciding what we can do, in community, to retain—and retrain—our attention.",
@@ -632,6 +654,11 @@ const COURSES = {
       questions: ["What does it mean to be information literate in an age when AI can generate information that appears credible, but may not always be accurate or reliable?"],
       room: "706",
       role: "Faculty", people: [person("Alia Methven"), person("Yi-Ching Hsieh")],
+      materials: [
+        { title: "Information Literacy, Discernment, and Thoughtful Use",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1fS6mnnueXFG849RxAd-kE5WFi9SSyfMP/view?usp=sharing" }
+      ],
       desc: [
         "Information literacy and AI literacy are becoming increasingly inseparable. Today’s online environment is vast, complex, and ever-changing—never has so much information been at our fingertips. It can be challenging for students, and sometimes even adults, to distinguish what is reliable from what is not.",
         "In this session, we’ll explore how Avenues is helping students develop the critical-thinking and information-literacy skills needed to navigate this landscape. We’ll also consider how large language models (LLMs) generate information and why understanding where information comes from—and knowing how to question, verify, and evaluate what AI produces—is becoming an essential part of information literacy.",
@@ -675,6 +702,11 @@ const COURSES = {
       questions: ["Who decides what technology should be created and introduced to schools?", "Who is creating education technology, and for whom?", "What purpose(s) does technology currently serve in education?", "What purpose(s) should technology serve in education?"],
       room: "703",
       role: "Faculty", people: [person("JD Pirtle")],
+      materials: [
+        { title: "What the History of Education Technology Tells Us About Today",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/14vZTy2u4dlXVXTe5gO-iMm1ZFtqpCItu/view?usp=sharing" }
+      ],
       desc: [
         "The sudden, deliberate imposition of generative AI products, such as ChatGPT and Claude, on K-12 schools, colleges, and universities, is not a new phenomenon. The push by technology companies to intertwine their interests with schooling is part of a long history of private enterprise attempting to co-opt or capture schooling in the United States, to serve the material and ideological interests of those enterprises.",
         "In this course, I will briefly detail the history of education technology in the United States in order to help us understand what is now at stake, and what parents, caregivers, and educators can do about it. We will discuss the dangers to teaching and learning posed by the introduction of AI chatbots and companion apps to children and adolescents, and examine what alternative technology movements and new technological imaginaries can offer to foster progressive education and social democracy in schools.",
@@ -739,6 +771,11 @@ const COURSES = {
       questions: ["How can AI help us better understand and support people with complex developmental and health needs, and where might it fall short of the human judgment, trust, and connection that care requires?"],
       room: "713",
       role: "Faculty", people: [person("Nadine Bou Rached")],
+      materials: [
+        { title: "AI and Health: Better Care, Without Losing Connection",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1ZEIA_OGztHA6nJKUQNWaD0-_poS4GaXk/view?usp=sharing" }
+      ],
       desc: [
         "What might artificial intelligence change about how we understand health and care for one another? This workshop explores AI’s potential in health research and everyday care, with particular attention to individuals with complex developmental and health needs, whether they face communication challenges, difficult diagnoses, or require ongoing support to stay safe and well. Through real-world examples, we’ll explore genetic and genomic research, communication tools, technologies that could make medical testing more accessible, and possible future treatment technologies and uses of assistive robotics. We’ll consider what these developments might offer individuals and caregivers, distinguishing promising possibilities from what remains uncertain.",
         "Care, however, is about more than finding the right tools. Everyday human interactions can offer opportunities to communicate, learn, build trust, and connect. Could AI strengthen these opportunities, or might relying on it too heavily reduce them? We’ll also consider questions of privacy, consent, reliability, and whose decisions shape the support someone receives. Rather than assuming that more technology means better care, we’ll explore where AI might help, where it could cause harm, and what we should be careful not to lose. No science or technology background is needed. Just bring your curiosity."
@@ -754,6 +791,11 @@ const COURSES = {
       questions: ["How can I leverage AI to build websites and applications that directly impact my lived experience?"],
       room: "714",
       role: "Faculty", people: [person("Chadd Clairmont"), person("Sam Basuk")],
+      materials: [
+        { title: "Vibe Coding: Understanding and Building with AI",
+          author: "Presentation slides (PDF)",
+          url: "https://drive.google.com/file/d/1DBNl_EiaAejoTKfrmaV583X8ZkPGwraZ/view?usp=sharing" }
+      ],
       desc: [
         "What if you could get up to speed on what AI can do—and experience it for yourself—in a single supportive session? In this interactive session, we will explore the emerging world of vibe coding, using conversational AI tools to design and build a functioning website—no previous programming experience required. Along the way, we’ll explore how web development has evolved, experiment with practical ways AI can support everyday life, and consider what these rapidly changing tools mean for our children as learners and creators.",
         "This is a session for anyone who wants to quickly understand what AI can now do. Come ready to experiment, ask questions, and perhaps leave having built something you never expected to build yourself."
@@ -897,6 +939,11 @@ function renderWay(n) {
       <div class="guiding">
         <h3>Guiding questions</h3>
         <ul>${c.questions.map(q => `<li>${q}</li>`).join("")}</ul>
+      </div>` : ""}
+      ${(c.materials || []).length ? `
+      <div class="materials">
+        <h3>Course materials</h3>
+        ${renderReadings(c.materials, "")}
       </div>` : ""}
       <div class="extras${c.readings.length ? "" : " extras-single"}">
         <section>
@@ -1560,6 +1607,8 @@ function buildIndex() {
       c.people.forEach(p => add({ kind: (c.role.startsWith("Presenter") ? "Presenter" : "Faculty") + " · " + strip(c.title),
             title: p.name, href, c: w.c, text: strip(p.bio || "") }));
       c.readings.forEach(r => add({ kind: "Reading · " + strip(c.title), title: strip(r.title), href, c: w.c,
+            text: [r.author, r.note].join(" ") }));
+      (c.materials || []).forEach(r => add({ kind: "Course materials · " + strip(c.title), title: strip(r.title), href, c: w.c,
             text: [r.author, r.note].join(" ") }));
       if (c.room) add({ kind: "Room · " + strip(c.title), title: "Room: " + c.room, href, c: w.c, text: joinNames(c.people) });
     });
